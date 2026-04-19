@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://ce6ekkorkp34e"]
+
+[ext_resource type="Texture2D" uid="uid://cp7acdkkkryi3" path="res://assets/images/tilemap/tilemap_packed.png" id="1_qqwsd"]
+
+[resource]
+atlas = ExtResource("1_qqwsd")
