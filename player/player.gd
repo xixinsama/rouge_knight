@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 class_name Player
 
 static var current: Player
@@ -9,3 +9,9 @@ const MoveLeft: StringName = &"move_left"
 const MoveRight: StringName = &"move_right"
 const Dash: StringName = &"dash"
 const Run: StringName = &"run"
+<<<<<<< HEAD
+=======
+
+func _ready() -> void:
+	pass
+>>>>>>> main
