@@ -2,5 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_rkbax"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oul6g"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Player" type="CharacterBody2D" unique_id=1529097501]
 script = ExtResource("1_oul6g")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
+
+[node name="MainSprite2D" type="Sprite2D" parent="SubViewport" unique_id=545110194]
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=161618814]
+texture = SubResource("ViewportTexture_rkbax")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1138973312]
+texture = SubResource("ViewportTexture_oul6g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1866585462]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1397455452]
