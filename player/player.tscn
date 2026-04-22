@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c5quehovv6ltn"]
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://c4h53l5yuq8mt" path="res://assets/images/texture/player/player_knight_01.tres" id="2_rkbax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(64, 64)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rkbax"]
 viewport_path = NodePath("SubViewport")
@@ -9,8 +13,18 @@ viewport_path = NodePath("SubViewport")
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody2D" unique_id=1529097501]
+position = Vector2(128, 192)
 script = ExtResource("1_oul6g")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144286148]
+scale = Vector2(4, 4)
+texture = ExtResource("2_rkbax")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=226335161]
+enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916302073]
+shape = SubResource("RectangleShape2D_rkbax")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
 
 [node name="MainSprite2D" type="Sprite2D" parent="SubViewport" unique_id=545110194]
