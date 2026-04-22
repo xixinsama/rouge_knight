@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cvglh06nmi2nb" path="res://scripts/components/health_component.gd" id="8_im127"]
 [ext_resource type="Texture2D" uid="uid://cfwdlvfl2jfl" path="res://assets/images/sword_slashes/red_yellow_group.png" id="9_rfs8u"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="12_im127"]
+[ext_resource type="Script" uid="uid://64pjk4q1bthn" path="res://scenes/test/screen_hint.gd" id="13_tpt76"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uchko"]
 texture = ExtResource("1_8tnbd")
@@ -1235,3 +1236,22 @@ shape = SubResource("RectangleShape2D_tpt76")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1873733114]
 libraries/ = SubResource("AnimationLibrary_asl1u")
 autoplay = &"20hits"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2006242003]
+
+[node name="ScreenHint" type="TextureRect" parent="CanvasLayer" unique_id=1609605685]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -151.0
+offset_right = 169.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+script = ExtResource("13_tpt76")
+metadata/_edit_lock_ = true
