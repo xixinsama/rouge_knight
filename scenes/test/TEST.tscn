@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cfwdlvfl2jfl" path="res://assets/images/sword_slashes/red_yellow_group.png" id="9_rfs8u"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="12_im127"]
 [ext_resource type="Script" uid="uid://64pjk4q1bthn" path="res://scenes/test/screen_hint.gd" id="13_tpt76"]
+[ext_resource type="Shader" uid="uid://b47puury7fyp1" path="res://assets/shaders/2d_cludes.gdshader" id="13_tpt76"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uchko"]
 texture = ExtResource("1_8tnbd")
@@ -946,6 +948,39 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_22icm")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tpt76"]
+frequency = 0.004
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asl1u"]
+noise = SubResource("FastNoiseLite_tpt76")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_um4pj"]
+noise_type = 2
+frequency = 0.0477
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xv13t"]
+noise = SubResource("FastNoiseLite_um4pj")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_w1i8c"]
+colors = PackedColorArray(0.44412494, 0.77751476, 0.9638143, 1, 0.6524507, 0.03163018, 0.7852602, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a0v8o"]
+gradient = SubResource("Gradient_w1i8c")
+use_hdr = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asl1u"]
+shader = ExtResource("13_tpt76")
+shader_parameter/pixelation = Vector2(128, 128)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_asl1u")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_xv13t")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0)
+shader_parameter/position_impact = 0.3999999910592
+shader_parameter/color_gardient = SubResource("GradientTexture1D_a0v8o")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rfs8u"]
 shader = ExtResource("6_0hhq7")
 shader_parameter/compress = 0.5
@@ -1166,6 +1201,11 @@ tile_set = SubResource("TileSet_22icm")
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1619243916]
 tile_map_data = PackedByteArray("AAADAAAAAAAJAAIAAAACAAAAAAAJAAIAAAABAAAAAAAJAAIAAAAAAAAAAAAJAAIAAAACAAIAAAAJAAIAAAACAAEAAAAJAAIAAAABAAIAAAAJAAIAAAABAAEAAAAJAAIAAAAAAAIAAAAJAAIAAAAAAAEAAAAJAAIAAAD//wIAAAAJAAIAAAD//wEAAAAJAAIAAAADAAIAAAAJAAIAAAADAAEAAAAJAAIAAAD//wAAAAAJAAIAAAACAAMAAAAJAAIAAAACAP//AAAJAAIAAAACAP7/AAAJAAIAAAABAAMAAAAJAAIAAAABAP//AAAJAAIAAAABAP7/AAAJAAIAAAAAAAMAAAAJAAIAAAAAAP//AAAJAAIAAAAAAP7/AAAJAAIAAAD//wMAAAAJAAIAAAD/////AAAJAAIAAAD///7/AAAJAAIAAAD+/wMAAAAJAAIAAAD+/wIAAAAJAAIAAAD+/wEAAAAJAAIAAAD+/wAAAAAJAAIAAAD+////AAAJAAIAAAD+//7/AAAJAAIAAAD9/wMAAAAJAAIAAAD9/wIAAAAJAAIAAAD9/wEAAAAJAAIAAAD9/wAAAAAJAAIAAAD9////AAAJAAIAAAD9//7/AAAJAAIAAAD8/wMAAAAJAAIAAAD8/wIAAAAJAAIAAAD8/wEAAAAJAAIAAAD8/wAAAAAJAAIAAAD8////AAAJAAIAAAD8//7/AAAJAAIAAAAEAAQAAAAJAAIAAAAEAAMAAAAGAAEAAAAEAAIAAAALAAIAAAAEAAEAAAAGAAIAAAAEAAAAAAAJAAIAAAAEAP//AAAJAAIAAAAEAP7/AAAGAAEAAAAEAP3/AAALAAAAAAADAAQAAAAFAAIAAAADAAMAAAAJAAIAAAADAP//AAAJAAIAAAADAP7/AAAJAAIAAAADAP3/AAAGAAEAAAACAAQAAAAJAAMAAAACAP3/AAAJAAIAAAABAAQAAAAJAAMAAAABAP3/AAAFAAEAAAAAAAQAAAAGAAIAAAAAAP3/AAAKAAAAAAD//wQAAAAFAAIAAAD///3/AAAKAAAAAAD+/wQAAAAJAAMAAAD+//3/AAAGAAEAAAD9/wQAAAAJAAMAAAD9//3/AAAFAAEAAAD8/wQAAAAJAAMAAAD8//3/AAAKAAAAAAD7/wQAAAAJAAMAAAD7/wMAAAAJAAIAAAD7/wIAAAAJAAIAAAD7/wEAAAAJAAIAAAD7/wAAAAAJAAIAAAD7////AAAJAAIAAAD7//7/AAAJAAIAAAD7//3/AAAKAAAAAAD6/wQAAAAJAAMAAAD6/wMAAAAJAAIAAAD6/wIAAAAJAAIAAAD6/wEAAAAJAAIAAAD6/wAAAAAJAAIAAAD6////AAAJAAIAAAD6//7/AAAJAAIAAAD6//3/AAAKAAAAAAD5/wQAAAAJAAMAAAD5/wMAAAAJAAIAAAD5/wIAAAAJAAIAAAD5/wEAAAAJAAIAAAD5/wAAAAAJAAIAAAD5////AAAFAAEAAAD5//7/AAAIAAEAAAD5//3/AAAIAAAAAAD+//z/AAALAAIAAAD+//v/AAALAAIAAAD+//r/AAALAAAAAAD9//z/AAAIAAEAAAD9//v/AAAIAAEAAAD9//r/AAAIAAAAAAADAPz/AAALAAIAAAADAPv/AAALAAIAAAADAPr/AAALAAAAAAACAPz/AAAJAAIAAAACAPv/AAAJAAIAAAACAPr/AAAKAAAAAAABAPz/AAAIAAEAAAABAPv/AAAIAAEAAAABAPr/AAAIAAAAAAAIAAEAAAALAAMAAAAIAAAAAAALAAIAAAAIAP//AAALAAIAAAAIAP7/AAALAAAAAAAHAAEAAAAJAAMAAAAHAAAAAAAJAAIAAAAHAP//AAAJAAIAAAAHAP7/AAAKAAAAAAAGAAEAAAAJAAMAAAAGAAAAAAAJAAIAAAAGAP//AAAJAAIAAAAGAP7/AAAKAAAAAAAFAAEAAAAJAAMAAAAFAAAAAAAJAAIAAAAFAP//AAAJAAIAAAAFAP7/AAAKAAAAAAAAAAUAAAALAAMAAAD//wUAAAAIAAMAAAD4/wAAAAAJAAIAAAD4////AAAKAAAAAAD3/wAAAAAIAAEAAAD3////AAAIAAAAAAD4/wIAAAAJAAIAAAD4/wQAAAAJAAMAAAD4/wMAAAAJAAIAAAD4/wEAAAAJAAIAAAD3/wQAAAAIAAMAAAD3/wMAAAAIAAEAAAD3/wIAAAAIAAEAAAD3/wEAAAAIAAEAAAAFAAUAAAALAAMAAAAFAAQAAAALAAIAAAAFAAMAAAALAAAAAAAEAAUAAAAJAAMAAAADAAUAAAAIAAMAAAA=")
 tile_set = SubResource("TileSet_18wdw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=487478733]
+material = SubResource("ShaderMaterial_asl1u")
+offset_right = 185.0
+offset_bottom = 157.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1712131436]
 position = Vector2(123, -63)
