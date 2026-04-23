@@ -1,8 +1,82 @@
 [gd_scene format=3 uid="uid://btpwlg2gi1woh"]
 
+[sub_resource type="Gradient" id="Gradient_pplsl"]
+offsets = PackedFloat32Array(0, 0.80653954, 1)
+colors = PackedColorArray(0.98039216, 0.11372549, 0, 1, 0.8117647, 0, 0, 1, 0.8117647, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2xly3"]
+gradient = SubResource("Gradient_pplsl")
+width = 16
+height = 16
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.4957265, 0.53846157)
+fill_to = Vector2(0.68682504, 0.28077754)
+
+[sub_resource type="Curve" id="Curve_pplsl"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.042569876), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2xly3"]
+curve = SubResource("Curve_pplsl")
+
+[sub_resource type="Gradient" id="Gradient_8186p"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.627907)
+colors = PackedColorArray(1, 1, 1, 1, 0.7666196, 0.76661956, 0.76661956, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a658j"]
+gradient = SubResource("Gradient_8186p")
+
+[sub_resource type="Gradient" id="Gradient_oh7p3"]
+colors = PackedColorArray(1, 1, 1, 1, 0.45490196, 0.45490196, 0.45490196, 0.6117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02ol2"]
+gradient = SubResource("Gradient_oh7p3")
+
+[sub_resource type="Curve" id="Curve_k4wob"]
+_limits = [0.5, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.0003941), 0.0, 6.4149394, 0, 1, Vector2(0.07788162, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.5), -1.0844595, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tkcbg"]
+curve = SubResource("Curve_k4wob")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pplsl"]
+lifetime_randomness = 0.2
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 1)
+angle_min = -89.99999
+angle_max = 90.000015
+direction = Vector3(4, 0, 0)
+spread = 30.0
+initial_velocity_min = 75.0
+initial_velocity_max = 160.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 19.999983
+angular_velocity_curve = SubResource("CurveTexture_2xly3")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 29.999996
+damping_min = 90.00001
+damping_max = 150.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_tkcbg")
+color_ramp = SubResource("GradientTexture1D_02ol2")
+color_initial_ramp = SubResource("GradientTexture1D_a658j")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.039999977
 
 [node name="Blood" type="GPUParticles2D" unique_id=2068041992]
+emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_2xly3")
+lifetime = 10.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_pplsl")
