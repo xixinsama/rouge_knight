@@ -5,6 +5,7 @@ func _ready() -> void:
 	# 给GLobal 赋值
 	Global.Bullet_Factory = $BulletFactory
 	Global.Particle_Spawner = $ParticleSpawner
+	Global.UI_Layer = $UI
 	Global.Screen_Hint = $UI/ScreenHint
 
 	await get_tree().create_timer(0.5).timeout

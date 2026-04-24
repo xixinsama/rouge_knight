@@ -4,4 +4,5 @@ class_name Global
 
 static var Bullet_Factory: BulletFactory
 static var Particle_Spawner: ParticleSpawner
+static var UI_Layer: CanvasLayer
 static var Screen_Hint: ScreenHint
