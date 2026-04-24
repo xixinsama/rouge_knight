@@ -13,17 +13,26 @@ config_version=5
 config/name="RougeKnight"
 config/description="见README.md"
 config/tags=PackedStringArray("2d", "rouge")
-run/main_scene="uid://c5quehovv6ltn"
+run/main_scene="uid://cyo0oqnkh2ebf"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InputTest="*uid://bv83ael8whosf"
+GameConst="*uid://dh4svneyibx5v"
+
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
+
+[editor]
+
+movie_writer/movie_file="D:/Godot4/MovieOutputRAW/rk_0.avi"
 
 [editor_plugins]
 

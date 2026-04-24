@@ -1,6 +1,8 @@
 extends Camera2D
 class_name CameraController
 
+static var current: CameraController
+
 @export_group("ZoomControl")
 ## 缩放输入动作名称
 @export var zoom_in_action: StringName = "zoom_in"
@@ -25,7 +27,8 @@ class_name CameraController
 var _target_zoom: Vector2
 
 func _ready() -> void:
-	_target_zoom = zoom
+	current = self
+	_target_zoom = self.zoom
 
 func _physics_process(delta: float) -> void:
 	# 1. 处理缩放输入
