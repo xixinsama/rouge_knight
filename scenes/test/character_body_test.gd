@@ -20,7 +20,7 @@ func _ready() -> void:
 const FLOATING_TEXT = preload("res://scenes/FloatingText.tscn")
 func get_damage(damage: int, _current_health: int):
 	var FT: FloatingText = FLOATING_TEXT.instantiate()
-	add_child(FT)
+	get_parent().add_child(FT)
 	if FT:
 		FT.display_damage_text(str(damage))
 
