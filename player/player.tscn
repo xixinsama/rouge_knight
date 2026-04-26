@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://c4h53l5yuq8mt" path="res://assets/images/texture/player/player_knight_01.tres" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://d01p10r0itev" path="res://assets/images/texture/weapon/weapon_01.tres" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://bqu0o2mwerhys" path="res://scripts/base/weapon.gd" id="4_yw30f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(64, 64)
@@ -9,32 +11,83 @@ size = Vector2(64, 64)
 [sub_resource type="ViewportTexture" id="ViewportTexture_rkbax"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_oul6g"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="Animation" id="Animation_yw30f"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "attack"
+length = 0.21
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Weapon/Weapon_01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 2, 0),
+"points": PackedFloat32Array(0, -0.10499996, 0, 0.105, 0, 2, -0.009954365, 0.03837839, 0, 0, 2.253472, -0.02001379, -0.41395712, 0, 0, 0, -0.10499996, 0, 0.105, 0),
+"times": PackedFloat32Array(0, 0.06, 0.17980893, 0.21)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6k8r"]
+_data = {
+&"RESET": SubResource("Animation_yw30f"),
+&"attack": SubResource("Animation_qjkh3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
+size = Vector2(8, 15.000004)
 
 [node name="Player" type="CharacterBody2D" unique_id=1529097501]
 position = Vector2(128, 192)
 script = ExtResource("1_oul6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144286148]
-scale = Vector2(4, 4)
-texture = ExtResource("2_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=226335161]
 enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916302073]
 shape = SubResource("RectangleShape2D_rkbax")
+
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
 
 [node name="MainSprite2D" type="Sprite2D" parent="SubViewport" unique_id=545110194]
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=161618814]
+visible = false
 texture = SubResource("ViewportTexture_rkbax")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1138973312]
-texture = SubResource("ViewportTexture_oul6g")
+scale = Vector2(4, 4)
+texture = ExtResource("2_rkbax")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1866585462]
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1397455452]
+
+[node name="Weapon" type="Node" parent="." unique_id=2070545847]
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://bqu0o2mwerhys"
+
+[node name="Timer" type="Timer" parent="Weapon" unique_id=1766975744]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon" unique_id=19711567]
+libraries/ = SubResource("AnimationLibrary_g6k8r")
+speed_scale = 0.5
+
+[node name="Weapon_01" type="Sprite2D" parent="Weapon" unique_id=336157180]
+position = Vector2(144, 200)
+scale = Vector2(4, 4)
+texture = ExtResource("3_g1dw6")
+offset = Vector2(0, -3.8130293)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Weapon_01" unique_id=1785033118]
+position = Vector2(0, -3.5000038)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_g1dw6")
+
+[connection signal="timeout" from="Weapon/Timer" to="Weapon" method="_on_timer_timeout"]

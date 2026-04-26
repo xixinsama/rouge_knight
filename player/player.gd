@@ -21,12 +21,24 @@ var status :Dictionary[String,StatusManage.Status]
 
 @export_group("子节点")
 
-@onready var player_sprite_2d: Sprite2D = $Sprite2D
 
 @export_group("")
 
 
 @export_group("外部资源")
+
+
+@export_group("")
+
+
+@export_group("基本属性")
+
+##近战攻击距离
+@export
+var melee_range : float=1.0
+##攻速
+@export
+var attack_speed : float=1.0
 
 
 @export_group("")
@@ -57,6 +69,8 @@ var move_input :Vector2 = Vector2.ZERO:
 func _ready() -> void:
 	##加载状态机
 	self.status=StatusManage.get_status()
+	##切换到攻击撞他
+	self.status.proactive.enter(self.status,StatusManage.PROACTIVE_LIST.ATTACK)
 	##加载贴图
 	pass
 

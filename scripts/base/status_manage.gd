@@ -148,6 +148,7 @@ class ProactiveBase extends Status:
 
 	##状态切换
 	func enter(status,enter :StatusManage.PROACTIVE_LIST):
+		print("切换主动状态: ", enter)
 		if enter==StatusManage.PROACTIVE_LIST.PROACTIVE_BASE:
 			status.proactive=ProactiveBase.new()
 		elif enter==StatusManage.PROACTIVE_LIST.ATTACK:
@@ -157,6 +158,9 @@ class ProactiveBase extends Status:
 		else :
 			status.proactive=ProactiveBase.new()
 
+	##攻击
+	func attack(animation_player :AnimationPlayer):
+		animation_player.play("")
 
 ##被动状态基类
 class PassiveBase extends Status:
@@ -241,7 +245,12 @@ class Attack extends ProactiveBase:
 
 	func get_status_key():
 		return StatusManage.PROACTIVE_LIST.ATTACK
-
+	
+	
+	func attack(animation_player :AnimationPlayer):
+		animation_player.play("attack")
+	
+	
 	pass
 
 ##闪避状态
