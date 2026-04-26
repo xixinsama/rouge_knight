@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cmse6ex8dqqjn"]
+
+[ext_resource type="Script" uid="uid://cel0ydj5gn7c8" path="res://scenes/enemies/godot/godot_enemy.gd" id="1_nptew"]
+[ext_resource type="Texture2D" uid="uid://oa8esvxckmtw" path="res://icon.svg" id="2_nptew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nptew"]
+size = Vector2(38, 38)
+
+[node name="GodotEnemy" type="CharacterBody2D" unique_id=281101931]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_nptew")
+debug_mode = true
+stuck_time = 1.0
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1961946514]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nptew")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113497708]
+shape = SubResource("RectangleShape2D_nptew")

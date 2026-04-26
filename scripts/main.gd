@@ -7,6 +7,8 @@ func _ready() -> void:
 	Global.Particle_Spawner = $ParticleSpawner
 	Global.UI_Layer = $UI
 	Global.Screen_Hint = $UI/ScreenHint
+	Global.Path_Finder = $"Map/AstarFindPath"
+	Global.draw_path = $Node2D
 
 	await get_tree().create_timer(0.5).timeout
 	Global.Particle_Spawner.emit_particle_scene(0, Vector2.ZERO, 0)

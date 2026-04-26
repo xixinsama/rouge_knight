@@ -1,18 +1,12 @@
 extends TileMapLayer
 
-var _astar := AStarGrid2D.new()
+@onready var astar_find_path: AstarFindPath = $AstarFindPath
+var path
+@onready var node_2d: Node2D = $"../Node2D"
 
 func _ready():
-	# 初始化A*算法
-	_astar.region = get_used_rect()
-	_astar.cell_size = Vector2(16, 16)
-	_astar.update()
-
-	# 设置障碍物
-	for cell in get_used_cells():
-		if get_cell_alternative_tile(cell) == 1:
-			_astar.set_point_solid(cell)
-	
-	
-
-	print(_astar.get_id_path(Vector2i(0, -3), Vector2i(4, 10)))
+	astar_find_path.initialize()
+	#path = astar_find_path.find_path(Vector2.ZERO, Vector2(160, 300))
+	#print(path)
+	##draw_polyline(path, Color.WHITE_SMOKE, 2)
+	#node_2d.draw_path(path)

@@ -20,8 +20,8 @@ static var current: CameraController
 @export var look_ahead_property: StringName = "velocity"
 ## 偏移系数：预瞄/滞后强度。正值=镜头朝速度方向前探，负值=滞后
 @export var offset_factor: float = 0.0
-## 跟随平滑速度（值越大跟随越快，推荐 3~8）
-@export var follow_smooth: float = 5.0
+## 跟随平滑速度
+@export var follow_speed: float = 800.0
 
 # 内部变量
 var _target_zoom: Vector2
@@ -60,15 +60,12 @@ func _follow_target(delta: float) -> void:
 	# 尝试获取偏移向量
 	var offset_vec := Vector2.ZERO
 	if offset_factor != 0.0 and not look_ahead_property.is_empty():
-		offset_vec = _get_property_vector(target, look_ahead_property)
+		offset_vec = _get_property_vector(target, look_ahead_property).normalized()
 		# 应用偏移系数（偏移量 = 向量 * 系数）
 		desired_pos += offset_vec * offset_factor
+		
+	global_position = global_position.move_toward(desired_pos, follow_speed * delta)
 	
-	# 使用指数平滑（无抖动，对帧率稳定）
-	# 公式：new = current + (target - current) * (1 - exp(-speed * delta))
-	var weight := 1.0 - exp(-follow_smooth * delta)
-	global_position = global_position.lerp(desired_pos, weight)
-
 
 ## 安全地从目标节点获取指定名称的 Vector2 属性
 func _get_property_vector(obj: Object, prop_name: StringName) -> Vector2:
