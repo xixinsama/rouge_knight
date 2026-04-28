@@ -18,11 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://ciomw8k5jplq1" path="res://assets/images/cross_hair.png" id="12_eb6dy"]
 [ext_resource type="Script" uid="uid://byrvwcljygviy" path="res://scripts/camera_crosshair.gd" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cmse6ex8dqqjn" path="res://scenes/enemies/godot/GodotEnemy.tscn" id="17_0ld40"]
+[ext_resource type="Texture2D" uid="uid://cdvdcphpyhcg3" path="res://assets/images/pointlight.png" id="18_yc10j"]
 [ext_resource type="Script" uid="uid://dyv8c7f8sr62r" path="res://scripts/dungeon_map/dungeon_generator.gd" id="19_0ld40"]
+[ext_resource type="PackedScene" uid="uid://6i0ko5avqu7" path="res://scenes/bullets/fire_ball_bullets.tscn" id="20_gqmmt"]
 
 [sub_resource type="Environment" id="Environment_tefeu"]
 background_mode = 3
 glow_enabled = true
+glow_levels/1 = 0.1
+glow_normalized = true
 
 [sub_resource type="Gradient" id="Gradient_trceg"]
 offsets = PackedFloat32Array(0)
@@ -95,6 +99,9 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yc10j"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
 texture = ExtResource("5_tefeu")
@@ -342,6 +349,7 @@ texture = ExtResource("5_tefeu")
 9:2/0/terrains_peering_bit/top_right_corner = 0
 9:2/1 = 1
 9:2/1/modulate = Color(0, 0, 0, 1)
+9:2/1/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_yc10j")
 9:2/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:2/0 = 0
 10:2/0/terrain_set = 0
@@ -439,6 +447,7 @@ texture = ExtResource("5_tefeu")
 [sub_resource type="TileSet" id="TileSet_tipki"]
 uv_clipping = true
 occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 158
 terrain_set_0/mode = 0
@@ -478,6 +487,18 @@ metadata/_custom_type_script = "uid://dqe4c0y6howym"
 [node name="BulletFactory" type="Node" parent="." unique_id=1120385752]
 script = ExtResource("2_sugp2")
 metadata/_custom_type_script = "uid://c0ifhxufuqa7"
+
+[node name="Bullet" parent="BulletFactory" unique_id=2095871754 instance=ExtResource("20_gqmmt")]
+position = Vector2(-152, 96)
+
+[node name="Bullet2" parent="BulletFactory" unique_id=911360774 instance=ExtResource("20_gqmmt")]
+position = Vector2(-104, 96)
+
+[node name="Bullet3" parent="BulletFactory" unique_id=427688108 instance=ExtResource("20_gqmmt")]
+position = Vector2(-184, 152)
+
+[node name="Bullet4" parent="BulletFactory" unique_id=552202614 instance=ExtResource("20_gqmmt")]
+position = Vector2(-136, 152)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1698896099]
 
@@ -594,6 +615,10 @@ debug_color = Color(0.79194146, 0.42808956, 9.62615e-07, 0.41960785)
 script = ExtResource("10_jkv2x")
 metadata/_custom_type_script = "uid://cvglh06nmi2nb"
 
+[node name="PointLight2D" type="PointLight2D" parent="演示用Player" unique_id=1785063190]
+energy = 1.5
+texture = ExtResource("18_yc10j")
+
 [node name="GodotEnemy" parent="." unique_id=281101931 node_paths=PackedStringArray("player") instance=ExtResource("17_0ld40")]
 velocity = Vector2(13.273172, -14.960725)
 speed = 300.0
@@ -606,7 +631,8 @@ script = ExtResource("5_tbgi4")
 min_zoom = Vector2(1, 1)
 max_zoom = Vector2(4, 4)
 target = NodePath("../演示用Player")
-offset_factor = 60.0
+offset_factor = 32.0
+follow_speed = 608.0
 metadata/_custom_type_script = "uid://b2ckafhpvuggq"
 
 [node name="CameraCrosshair" type="AnimatedSprite2D" parent="CameraController" unique_id=2052358291]

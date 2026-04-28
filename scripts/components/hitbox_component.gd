@@ -22,3 +22,4 @@ func _update_collision() -> void:
 ## 被受击框调用，表示已造成伤害
 func register_hit(hurtbox: HurtboxComponent) -> void:
 	hit.emit(hurtbox)
+	active = false

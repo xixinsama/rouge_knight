@@ -22,8 +22,8 @@ func preload_pool(bullet_scene: PackedScene, amount: int = DEFAULT_POOL_SIZE) ->
 		add_child(bullet)
 		_pools[key].append(bullet)
 
-## 生成子弹（主接口）
-func spawn(bullet_scene: PackedScene, start_pos: Vector2, dir: Vector2, speed: float) -> Bullet:
+## 生成默认子弹
+func spawn_defoult(bullet_scene: PackedScene, start_pos: Vector2, dir: Vector2, speed: float) -> Bullet:
 	var key = bullet_scene.resource_path
 	if not _pools.has(key):
 		_pools[key] = []
@@ -60,9 +60,6 @@ func return_bullet(bullet: Bullet) -> void:
 	# 重置状态并放回池中
 	bullet.hide()
 	bullet.set_process(false)
-	if bullet is Area2D:
-		bullet.monitoring = false
-		bullet.monitorable = false
 	_pools[key].push_back(bullet)
 
 ## 清除某一类型的所有子弹（例如切换关卡）

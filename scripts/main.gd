@@ -10,7 +10,12 @@ func _ready() -> void:
 	Global.Path_Finder = $"Map/AstarFindPath"
 	Global.draw_path = $Node2D
 
-	await get_tree().create_timer(0.5).timeout
-	Global.Particle_Spawner.emit_particle_scene(0, Vector2.ZERO, 0)
+	var timer: Timer = Timer.new()
+	timer.wait_time = 12
+	timer.autostart = true
+	add_child(timer)
+	timer.timeout.connect(Global.Particle_Spawner.emit_particle_scene.bind(0, Vector2.ZERO, 0))
+	#await get_tree().create_timer(0.5).timeout
+	#Global.Particle_Spawner.emit_particle_scene(0, Vector2.ZERO, 0)
 	await get_tree().create_timer(10).timeout
 	Global.Screen_Hint.low_hp()

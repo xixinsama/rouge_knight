@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cu2vv8x0at4ej"]
+
+[ext_resource type="Texture2D" uid="uid://bn802mxxto51p" path="res://assets/images/particle_use/water_mark.png" id="1_3mu4k"]
+[ext_resource type="Texture2D" uid="uid://bjmfjsoduo22d" path="res://assets/images/particle_use/water_mark_1.png" id="2_ncq3r"]
+
+[sub_resource type="Gradient" id="Gradient_cjcoy"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tl3a"]
+gradient = SubResource("Gradient_cjcoy")
+
+[sub_resource type="Curve" id="Curve_m8ubc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6467391), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p4fy0"]
+curve = SubResource("Curve_m8ubc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ct3s"]
+particle_flag_disable_z = true
+angle_min = -89.99999
+angle_max = 90.000015
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_p4fy0")
+color = Color(0.8235294, 0.80784315, 0.972549, 0.36862746)
+color_ramp = SubResource("GradientTexture1D_3tl3a")
+
+[node name="PlayerWet" type="GPUParticles2D" unique_id=1174212797]
+amount = 35
+texture = ExtResource("1_3mu4k")
+lifetime = 6.2
+process_material = SubResource("ParticleProcessMaterial_3ct3s")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1720499482]
+amount = 25
+texture = ExtResource("2_ncq3r")
+lifetime = 6.2
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_3ct3s")

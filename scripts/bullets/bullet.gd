@@ -14,15 +14,15 @@ func activate(start_pos: Vector2, dir: Vector2, spd: float) -> void:
 	show()
 	set_process(true)
 	# 如有碰撞，重新启用监视
-	monitoring = true
-	monitorable = true
+	call_deferred(&"set_monitorable", true)
+	call_deferred(&"set_monitoring", true)
 
 ## 停用子弹并归还对象池
 func deactivate() -> void:
 	hide()
 	set_process(false)
-	monitoring = false
-	monitorable = false
+	call_deferred(&"set_monitorable", false)
+	call_deferred(&"set_monitoring", false)
 	# 通知工厂回收本子弹
 	Global.Bullet_Factory.return_bullet(self)
 
@@ -30,7 +30,7 @@ func deactivate() -> void:
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 	# 简单边界检查（根据屏幕尺寸调整）
-	var screen_size = get_viewport_rect().size
-	if position.x < -50 or position.x > screen_size.x + 50 or \
-	   position.y < -50 or position.y > screen_size.y + 50:
-		deactivate()
+	#var screen_size = get_viewport_rect().size
+	#if position.x < -50 or position.x > screen_size.x + 50 or \
+	   #position.y < -50 or position.y > screen_size.y + 50:
+		#deactivate()

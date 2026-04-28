@@ -1,17 +1,6 @@
 [gd_scene format=3 uid="uid://btpwlg2gi1woh"]
 
-[sub_resource type="Gradient" id="Gradient_pplsl"]
-offsets = PackedFloat32Array(0, 0.80653954, 1)
-colors = PackedColorArray(0.98039216, 0.11372549, 0, 1, 0.8117647, 0, 0, 1, 0.8117647, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2xly3"]
-gradient = SubResource("Gradient_pplsl")
-width = 16
-height = 16
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.4957265, 0.53846157)
-fill_to = Vector2(0.68682504, 0.28077754)
+[ext_resource type="Texture2D" uid="uid://dq2usbkexayii" path="res://assets/images/particle_use/blood_0.png" id="1_2xly3"]
 
 [sub_resource type="Curve" id="Curve_pplsl"]
 _limits = [0.0, 2.0, 0.0, 1.0]
@@ -69,14 +58,16 @@ color_ramp = SubResource("GradientTexture1D_02ol2")
 color_initial_ramp = SubResource("GradientTexture1D_a658j")
 hue_variation_min = -0.050000023
 hue_variation_max = 0.039999977
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [node name="Blood" type="GPUParticles2D" unique_id=2068041992]
-emitting = false
-amount = 12
-texture = SubResource("GradientTexture2D_2xly3")
+amount = 36
+texture = ExtResource("1_2xly3")
 lifetime = 10.0
-one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 randomness = 0.4
+collision_base_size = 4.0
 process_material = SubResource("ParticleProcessMaterial_pplsl")
