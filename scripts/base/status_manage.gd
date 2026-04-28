@@ -50,6 +50,12 @@ static var _warehouse :Dictionary[int,Dictionary] = {}
 func _ready() -> void:
 	pass
 
+##状态改变时信号
+signal chage_move_status(status :int)
+
+func to_chage_move_status(status :int):
+	chage_move_status.emit(status)
+	pass
 
 ##获取默认标识
 static func get_base_key() -> Dictionary[String,int]:
@@ -112,6 +118,9 @@ class Status:
 ##dash	冲刺
 class MoveBase extends Status:
 
+
+	
+
 	func get_status_key():
 		return StatusManage.MOVE_LIST.MOVE_BASE
 
@@ -131,6 +140,7 @@ class MoveBase extends Status:
 			status.move=Dash.new()
 		else :
 			status.move=MoveBase.new()
+		status.move._start()
 		pass
 	
 
@@ -138,6 +148,13 @@ class MoveBase extends Status:
 	func move(player :CharacterBody2D,move_input :Vector2):
 		self.enter(player.status,StatusManage.MOVE_LIST.WALK)
 		pass
+	
+	func _start():
+		Statusmanage.to_chage_move_status(self.get_status_key())
+		return self
+		
+	func idle(animation_player :AnimationPlayer):
+		animation_player.play("idle")
 
 
 ##主动状态基类

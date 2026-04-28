@@ -1,7 +1,7 @@
 @tool
 ##主武器基类
 class_name Weapon
-extends Node
+extends Node2D
 
 
 @export_group("外部属性")
@@ -52,7 +52,8 @@ func _get_configuration_warnings():
 
 
 func _ready() -> void:
-	
+	##连接信号
+	timer.timeout.connect(_on_timer_timeout)
 	pass
 
 

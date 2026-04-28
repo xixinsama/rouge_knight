@@ -21,6 +21,7 @@ var status :Dictionary[String,StatusManage.Status]
 
 @export_group("子节点")
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export_group("")
 
@@ -69,9 +70,11 @@ var move_input :Vector2 = Vector2.ZERO:
 func _ready() -> void:
 	##加载状态机
 	self.status=StatusManage.get_status()
-	##切换到攻击撞他
+	##连接信号
+	Statusmanage.chage_move_status.connect(_chage_move_status)
+	##切换到攻击状态
 	self.status.proactive.enter(self.status,StatusManage.PROACTIVE_LIST.ATTACK)
-	##加载贴图
+	
 	pass
 
 
@@ -107,7 +110,14 @@ func _input(event :InputEvent) -> void:
 
 
 
-
+##移动状态变更信号
+func _chage_move_status(status :int):
+	print("移动状态变更:",status)
+	if status==Statusmanage.MOVE_LIST.MOVE_BASE:
+		self.status.move.idle(animation_player)
+	elif status==Statusmanage.MOVE_LIST.IDLE:
+		self.status.move.idle(animation_player)
+	pass
 
 
 

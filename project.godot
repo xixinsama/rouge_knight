@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 InputTest="*uid://bv83ael8whosf"
 GameConst="*uid://dh4svneyibx5v"
+Statusmanage="*uid://c11e816361qay"
 
 [display]
 
