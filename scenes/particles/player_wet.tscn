@@ -28,6 +28,8 @@ color = Color(0.8235294, 0.80784315, 0.972549, 0.36862746)
 color_ramp = SubResource("GradientTexture1D_3tl3a")
 
 [node name="PlayerWet" type="GPUParticles2D" unique_id=1174212797]
+z_index = 1
+z_as_relative = false
 amount = 35
 texture = ExtResource("1_3mu4k")
 lifetime = 6.2

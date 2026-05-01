@@ -58,5 +58,7 @@ hue_variation_min = -0.050000023
 hue_variation_max = 0.039999977
 
 [node name="BlastDust" type="GPUParticles2D" unique_id=917246978]
+z_index = 9
+z_as_relative = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_botlk")

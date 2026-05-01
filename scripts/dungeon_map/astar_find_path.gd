@@ -28,7 +28,10 @@ func initialize() -> void:
 func find_path(from_global_pos: Vector2, to_global_pos: Vector2) -> Array[Vector2]:
 	var from_id = tile_map_layer.local_to_map(tile_map_layer.to_local(from_global_pos))
 	var to_id = tile_map_layer.local_to_map(tile_map_layer.to_local(to_global_pos))
-	var id_path := _astar.get_id_path(from_id, to_id)
+	var id_path: Array = []
+	if _astar.region.has_point(from_id) and _astar.region.has_point(to_id):
+		id_path = _astar.get_id_path(from_id, to_id)
+		
 	var point_path: Array[Vector2] = []
 	for i in id_path:
 		point_path.append(tile_map_layer.to_global(tile_map_layer.map_to_local(i)))

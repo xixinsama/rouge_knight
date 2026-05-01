@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c7dlamavwd203"]
+
+[ext_resource type="Script" uid="uid://ygnmwryy7dn6" path="res://scripts/layer_door.gd" id="1_3d21b"]
+[ext_resource type="Texture2D" uid="uid://0ver1d17xpi2" path="res://assets/images/tilemap/tiles_city.png" id="1_at566"]
+[ext_resource type="PackedScene" uid="uid://cwxr72j5b0tkr" path="res://scenes/particles/blast_dust.tscn" id="1_j3odi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at566"]
+size = Vector2(32, 32)
+
+[node name="LayerDoor" type="Node2D" unique_id=876792595]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_3d21b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1544470838]
+z_index = 1
+z_as_relative = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_at566")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 16, 32, 16)
+region_filter_clip_enabled = true
+
+[node name="BlastDust" parent="." unique_id=917246978 instance=ExtResource("1_j3odi")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=628403386]
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=697582604]
+shape = SubResource("RectangleShape2D_at566")
+
+[node name="Timer" type="Timer" parent="." unique_id=293861366]
+wait_time = 0.5

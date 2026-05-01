@@ -1009,6 +1009,8 @@ animations = [{
 size = Vector2(24, 16)
 
 [node name="FireBallBullet" type="Area2D" unique_id=911360774]
+z_index = 5
+z_as_relative = false
 collision_layer = 128
 script = ExtResource("1_bb6xf")
 

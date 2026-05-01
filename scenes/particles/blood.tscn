@@ -63,6 +63,8 @@ collision_friction = 0.0
 collision_bounce = 0.0
 
 [node name="Blood" type="GPUParticles2D" unique_id=2068041992]
+z_index = 4
+z_as_relative = false
 amount = 36
 texture = ExtResource("1_2xly3")
 lifetime = 10.0

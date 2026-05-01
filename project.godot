@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 InputTest="*uid://bv83ael8whosf"
 GameConst="*uid://dh4svneyibx5v"
+LoadingScreen="*uid://bgmjscfk86fv2"
 
 [display]
 
