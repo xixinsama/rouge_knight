@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc5q0j8cfqfc7" path="res://scenes/bullets/fire_ball_bullets.gd" id="1_bb6xf"]
 [ext_resource type="Texture2D" uid="uid://0phjxchtnxqd" path="res://assets/images/bullets/bullet_0.png" id="2_42elb"]
+[ext_resource type="Script" uid="uid://bubt6wvp2o30n" path="res://scripts/bullets/bullet_data.gd" id="2_xdx5w"]
 [ext_resource type="Texture2D" uid="uid://bnl8pwmxycrds" path="res://assets/images/bullets/bullet_1.png" id="3_42elb"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="3_cw5ho"]
 [ext_resource type="Texture2D" uid="uid://byt7ybbxj5eho" path="res://assets/images/bullets/bullet_2.png" id="4_wt7ml"]
@@ -11,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cbr4eihwjt2w2" path="res://assets/images/bullets/bullet_6.png" id="8_ns4x0"]
 [ext_resource type="Texture2D" uid="uid://7cliyhkoml53" path="res://assets/images/bullets/bullet_7.png" id="9_1p1fo"]
 [ext_resource type="Texture2D" uid="uid://ctwg7rj05acv7" path="res://assets/images/bullets/bullet_8.png" id="10_bb6xf"]
+
+[sub_resource type="Resource" id="Resource_h63nr"]
+script = ExtResource("2_xdx5w")
+initial_speed = 0.0
+max_speed = 100.0
+metadata/_custom_type_script = "uid://bubt6wvp2o30n"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt7ml"]
 atlas = ExtResource("2_42elb")
@@ -1013,6 +1020,7 @@ z_index = 5
 z_as_relative = false
 collision_layer = 128
 script = ExtResource("1_bb6xf")
+data = SubResource("Resource_h63nr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1670544026]
 position = Vector2(-16, 0)

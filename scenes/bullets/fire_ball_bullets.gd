@@ -1,23 +1,20 @@
 extends Bullet
 class_name FireBall
 
-const sprite_animation_name: Array[StringName] = [&"bullet_0", &"bullet_1", &"bullet_2", &"bullet_3", &"bullet_4", &"bullet_5", &"bullet_6", &"bullet_7", &"bullet_8"]
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
+
 func _ready() -> void:
-	hitbox_component.hit.connect(self.deactivate.unbind(1)) ## 命中回收
-	self.body_entered.connect(_on_body_entered)
-	self.tree_entered.connect(func(): hitbox_component.active = true)
+	hitbox_component.hit.connect(deactivate.unbind(1))
+	body_entered.connect(_on_body_entered)
+	tree_entered.connect(func(): hitbox_component.active = true)
 	animated_sprite_2d.play(&"bullet_0")
-	
 
-func shoot(type: int, start_pos: Vector2, dir: Vector2, spd: float):
-	animated_sprite_2d.play(sprite_animation_name[clampi(type, 0, 8)])
-	self.activate(start_pos, dir, spd)
+func shoot(bullet_data: BulletData, start_pos: Vector2, dir: Vector2, shooter: Node2D = null) -> void:
+	activate(bullet_data, start_pos, dir, shooter)
 
-## 撞墙回收
-func _on_body_entered(body: Node2D):
+
+func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
-		self.deactivate()
+		deactivate()

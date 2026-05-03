@@ -30,8 +30,10 @@ func get_damage(damage: int, _current_health: int):
 	var FT: FloatingText = FLOATING_TEXT.instantiate()
 	FT.global_position = self.global_position
 	if Global.Floating_Texts:
+		# print("path0")
 		Global.Floating_Texts.add_child(FT)
 	else:
+		printerr("path1, 需要进行坐标变化")
 		add_child(FT)
 	if FT:
 		FT.display_damage_text(str(damage))

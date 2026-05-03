@@ -7,4 +7,5 @@ func draw_path(p: PackedVector2Array):
 	queue_redraw()
 
 func _draw() -> void:
-	draw_polyline(path, Color.WHITE_SMOKE, 2)
+	if path.size() > 3:
+		draw_polyline(path, Color.WHITE_SMOKE, 2)

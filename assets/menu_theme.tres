@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://04l876qr1pmq"]
+
+[ext_resource type="FontFile" uid="uid://cxrd8mo11i6ow" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Medium-3.ttf" id="1_tf8oi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf8oi"]
+bg_color = Color(0.23921569, 0.68235296, 0.9137255, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.07450981, 0.078431375, 0.08627451, 1)
+border_blend = true
+shadow_size = 8
+shadow_offset = Vector2(4, 4)
+
+[resource]
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_tf8oi")
+Label/font_sizes/font_size = 32
+LineEdit/font_sizes/font_size = 48
+LineEdit/fonts/font = ExtResource("1_tf8oi")
+ProgressBar/constants/outline_size = 2
+ProgressBar/font_sizes/font_size = 32
+ProgressBar/fonts/font = ExtResource("1_tf8oi")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tf8oi")

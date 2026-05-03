@@ -44,7 +44,7 @@ func screen_prompt_animation(
 	
 	# 第一部：放大到原始尺寸，同时从不透明变为完全可见（alpha 0 -> 1）
 	tween.tween_property(self, "scale", Vector2(1.2, 1.2), fade_in_duration).set_ease(Tween.EASE_IN)
-	tween.parallel().tween_property(self, "modulate:a", 1.0, fade_in_duration)
+	tween.parallel().tween_property(self, "modulate:a", 0.3, fade_in_duration)
 	tween.tween_property(self, "scale", Vector2.ONE, fade_in_duration / 2).set_ease(Tween.EASE_OUT)
 	# 等待停留时间
 	tween.tween_interval(hold_duration)

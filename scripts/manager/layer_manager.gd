@@ -8,7 +8,6 @@ class_name LayerManager
 ## 目标层从小到大，透明渐变，碰撞生效
 
 @export var all_layers: Array[TileMapLayer]
-@export var all_astar: Array[AstarFindPath]
 @export var current_layer_index: int = 0:
 	set(v):
 		var new_layer_index: int = wrapi(v, 0, all_layers.size())
@@ -18,6 +17,7 @@ class_name LayerManager
 		current_layer = all_layers[current_layer_index]
 		current_path_finder = all_astar[current_layer_index]
 
+var all_astar: Array[AstarFindPath]
 var current_path_finder: AstarFindPath:
 	# 同步到 Global
 	set(v):

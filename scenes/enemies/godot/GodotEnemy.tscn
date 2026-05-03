@@ -14,11 +14,11 @@ size = Vector2(38, 38)
 size = Vector2(38, 38)
 
 [node name="GodotEnemy" type="CharacterBody2D" unique_id=281101931]
+z_index = 2
+z_as_relative = false
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_nptew")
-debug_mode = true
-stuck_time = 1.0
 
 [node name="PlayerWet" parent="." unique_id=1174212797 instance=ExtResource("3_2w47i")]
 

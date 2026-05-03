@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://xq7dxnoohr7a"]
 
 [ext_resource type="Script" uid="uid://droufxb88jfxr" path="res://scripts/floating_text.gd" id="1_fc4js"]
-[ext_resource type="FontFile" uid="uid://bn65lidlu1x0q" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Bold-Italic-8.ttf" id="1_iwtc3"]
+[ext_resource type="FontFile" uid="uid://cdhgmehxegiv2" path="res://assets/fonts/pixiv/VonwaonBitmap-16px.ttf" id="2_fc4js"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc4js"]
-font = ExtResource("1_iwtc3")
+font = ExtResource("2_fc4js")
 font_color = Color(1, 0.047058824, 0.19215687, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.14901961)
-shadow_offset = Vector2(1, 3)
+shadow_offset = Vector2(1, 2)
 
 [node name="FloatingText" type="Node2D" unique_id=1681328688 node_paths=PackedStringArray("label")]
 z_index = 10

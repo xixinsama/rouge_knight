@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bm2knjxbbqr4q"]
+
+[ext_resource type="Script" uid="uid://ciqqjogqnuww0" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Theme" uid="uid://04l876qr1pmq" path="res://assets/menu_theme.tres" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node2D" unique_id=676148548]
+script = ExtResource("1_ekxnf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1904832741]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=358001393]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1897746862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.13725491, 0.14901961, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=941150267]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -378.0
+offset_right = 280.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1726921489]
+layout_mode = 2
+theme = ExtResource("1_l6cm7")
+text = "Game Start"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1082529617]
+layout_mode = 2
+text = "Seed will determine how the dungeon is generated;
+Leave blank for random."
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/VBoxContainer" unique_id=698133160]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+theme = ExtResource("1_l6cm7")
+placeholder_text = "SEED"
+alignment = 1
+max_length = 16
+caret_blink = true
