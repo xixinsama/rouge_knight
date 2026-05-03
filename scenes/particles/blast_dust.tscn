@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cwxr72j5b0tkr"]
+
+[sub_resource type="Curve" id="Curve_lljcr"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.042569876), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s5jxn"]
+curve = SubResource("Curve_lljcr")
+
+[sub_resource type="Gradient" id="Gradient_2f60l"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.627907)
+colors = PackedColorArray(1, 1, 1, 1, 0.7666196, 0.76661956, 0.76661956, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bt7rg"]
+gradient = SubResource("Gradient_2f60l")
+
+[sub_resource type="Gradient" id="Gradient_tm4ho"]
+colors = PackedColorArray(1, 1, 1, 1, 0.45490196, 0.45490196, 0.45490196, 0.6117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c7n22"]
+gradient = SubResource("Gradient_tm4ho")
+
+[sub_resource type="Curve" id="Curve_ux1c3"]
+_limits = [0.5, 1.5, 0.0, 1.0]
+_data = [Vector2(0, 1.0003941), 0.0, 6.4149394, 0, 1, Vector2(0.07788162, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.5), -1.0844595, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mxfj0"]
+curve = SubResource("Curve_ux1c3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_botlk"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(32, 32, 1)
+angle_min = -89.99999
+angle_max = 90.000015
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 19.999983
+angular_velocity_curve = SubResource("CurveTexture_s5jxn")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 29.999996
+damping_min = 90.00001
+damping_max = 150.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_mxfj0")
+color_ramp = SubResource("GradientTexture1D_c7n22")
+color_initial_ramp = SubResource("GradientTexture1D_bt7rg")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.039999977
+
+[node name="BlastDust" type="GPUParticles2D" unique_id=917246978]
+z_index = 9
+z_as_relative = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_botlk")

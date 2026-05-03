@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cmse6ex8dqqjn"]
+
+[ext_resource type="Script" uid="uid://cel0ydj5gn7c8" path="res://scenes/enemies/godot/godot_enemy.gd" id="1_nptew"]
+[ext_resource type="Texture2D" uid="uid://oa8esvxckmtw" path="res://icon.svg" id="2_nptew"]
+[ext_resource type="PackedScene" uid="uid://cu2vv8x0at4ej" path="res://scenes/particles/player_wet.tscn" id="3_2w47i"]
+[ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="4_jcxq1"]
+[ext_resource type="Script" uid="uid://dblh2g0jdpm6m" path="res://scripts/components/hurtbox_component.gd" id="5_br0rx"]
+[ext_resource type="Script" uid="uid://cvglh06nmi2nb" path="res://scripts/components/health_component.gd" id="6_go4nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nptew"]
+size = Vector2(38, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcxq1"]
+size = Vector2(38, 38)
+
+[node name="GodotEnemy" type="CharacterBody2D" unique_id=281101931]
+z_index = 2
+z_as_relative = false
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_nptew")
+
+[node name="PlayerWet" parent="." unique_id=1174212797 instance=ExtResource("3_2w47i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113497708]
+shape = SubResource("RectangleShape2D_nptew")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1961946514]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nptew")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=101745250]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("4_jcxq1")
+active = true
+metadata/_custom_type_script = "uid://bjnm23jbmmhga"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1658827939]
+shape = SubResource("RectangleShape2D_nptew")
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1959488370 node_paths=PackedStringArray("health_component")]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("5_br0rx")
+health_component = NodePath("HealthComponent")
+metadata/_custom_type_script = "uid://dblh2g0jdpm6m"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2071083195]
+shape = SubResource("RectangleShape2D_jcxq1")
+
+[node name="HealthComponent" type="Node" parent="HurtboxComponent" unique_id=848075256]
+script = ExtResource("6_go4nl")
+metadata/_custom_type_script = "uid://cvglh06nmi2nb"

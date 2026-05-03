@@ -18,5 +18,6 @@ func _on_area_entered(area: Area2D) -> void:
 	# 血量组件存在且未死亡时造成伤害
 	if health_component and not health_component.is_dead:
 		health_component.take_damage(hitbox.damage)
+		
 		# 通知攻击框已击中，用于触发攻击方的特效/音效
 		hitbox.register_hit(self)

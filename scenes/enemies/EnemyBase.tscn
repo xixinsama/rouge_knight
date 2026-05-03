@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dq11b8np4m0np"]
+
+[ext_resource type="Script" uid="uid://cwjsge217nyg3" path="res://scenes/enemies/base_enemy.gd" id="1_base"]
+[ext_resource type="Script" uid="uid://dcpjf1kqlnh3a" path="res://scenes/enemies/enemy_config.gd" id="2_8dce0"]
+[ext_resource type="Script" uid="uid://dt0vg4ao6tvj" path="res://scenes/enemies/components/enemy_state_machine.gd" id="2_sm"]
+[ext_resource type="Script" uid="uid://cpvkty7d67fyx" path="res://scenes/enemies/components/enemy_movement.gd" id="3_mv"]
+[ext_resource type="Script" uid="uid://bdqet16n5qx1y" path="res://scenes/enemies/components/enemy_detection.gd" id="4_dt"]
+[ext_resource type="Script" uid="uid://ca7iltlesccp6" path="res://scenes/enemies/components/enemy_attack_contact.gd" id="5_ac"]
+[ext_resource type="Script" uid="uid://cx6n1w1v6he1q" path="res://scenes/enemies/components/enemy_attack_melee.gd" id="6_am"]
+[ext_resource type="Script" uid="uid://td680vqef0px" path="res://scenes/enemies/components/enemy_attack_ranged.gd" id="7_ar"]
+[ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="8_hb"]
+[ext_resource type="Script" uid="uid://dblh2g0jdpm6m" path="res://scripts/components/hurtbox_component.gd" id="9_hu"]
+[ext_resource type="Script" uid="uid://cvglh06nmi2nb" path="res://scripts/components/health_component.gd" id="10_hc"]
+[ext_resource type="Texture2D" uid="uid://oa8esvxckmtw" path="res://icon.svg" id="11_icon"]
+
+[sub_resource type="Resource" id="Resource_rvnl8"]
+script = ExtResource("2_8dce0")
+metadata/_custom_type_script = "uid://dcpjf1kqlnh3a"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
+size = Vector2(32, 32)
+
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1282296849]
+z_index = 2
+z_as_relative = false
+collision_layer = 4
+collision_mask = 129
+motion_mode = 1
+script = ExtResource("1_base")
+config = SubResource("Resource_rvnl8")
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1547276511]
+script = ExtResource("2_sm")
+
+[node name="EnemyMovement" type="Node" parent="." unique_id=458375100]
+script = ExtResource("3_mv")
+
+[node name="EnemyDetection" type="Node" parent="." unique_id=1939343823]
+script = ExtResource("4_dt")
+
+[node name="EnemyAttackContact" type="Node" parent="." unique_id=1584734187]
+script = ExtResource("5_ac")
+
+[node name="EnemyAttackMelee" type="Node" parent="." unique_id=687947752]
+script = ExtResource("6_am")
+
+[node name="EnemyAttackRanged" type="Node" parent="." unique_id=383284313]
+script = ExtResource("7_ar")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=371864683]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=812536571]
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1652688232]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("8_hb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1236837356]
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1846605619 node_paths=PackedStringArray("health_component")]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("9_hu")
+health_component = NodePath("HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=642807862]
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="HealthComponent" type="Node" parent="HurtboxComponent" unique_id=1893038976]
+script = ExtResource("10_hc")

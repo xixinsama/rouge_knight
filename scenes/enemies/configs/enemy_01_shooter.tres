@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+enemy_id = "小怪01_射手"
+max_health = 1
+move_speed = 30.0
+acceleration = 200.0
+detection_radius = 400.0
+attack_range = 0.0
+far_attack_range = 350.0
+attack_interval = 2.0
+attack_type = 2
+attack_damage = 8
+behavior = 2
+has_pathfinding = false
+terrain_restricted = true

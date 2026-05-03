@@ -2,9 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://c4h53l5yuq8mt" path="res://assets/images/texture/player/player_knight_01.tres" id="2_rkbax"]
+[ext_resource type="Shader" uid="uid://u7tnqsp6kvu3" path="res://assets/shaders/shadow.gdshader" id="3_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yw30f"]
+shader = ExtResource("3_g1dw6")
+shader_parameter/compress = 0.5
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_alpha = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/flip_h = false
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rkbax"]
 viewport_path = NodePath("SubViewport")
@@ -12,7 +21,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_oul6g"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Player" type="CharacterBody2D" unique_id=1529097501]
+[node name="Player" type="CharacterBody2D" unique_id=1529097501 groups=["player"]]
 position = Vector2(128, 192)
 script = ExtResource("1_oul6g")
 
@@ -25,11 +34,13 @@ enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916302073]
 shape = SubResource("RectangleShape2D_rkbax")
+
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
 
 [node name="MainSprite2D" type="Sprite2D" parent="SubViewport" unique_id=545110194]
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=161618814]
+material = SubResource("ShaderMaterial_yw30f")
 texture = SubResource("ViewportTexture_rkbax")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1138973312]

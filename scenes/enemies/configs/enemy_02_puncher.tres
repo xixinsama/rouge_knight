@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+enemy_id = "小怪02_拳击手"
+max_health = 1
+move_speed = 70.0
+acceleration = 350.0
+detection_radius = 250.0
+attack_range = 48.0
+far_attack_range = 0.0
+attack_interval = 1.2
+attack_type = 1
+attack_damage = 15
+behavior = 1
+has_pathfinding = true
+terrain_restricted = true

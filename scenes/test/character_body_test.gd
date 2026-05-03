@@ -19,8 +19,22 @@ func _ready() -> void:
 
 const FLOATING_TEXT = preload("res://scenes/FloatingText.tscn")
 func get_damage(damage: int, _current_health: int):
+	if damage > 0:
+		## 效果
+		# 镜头抖动
+		var camera: CameraController = CameraController.current
+		camera.hit_shake()
+		# 手柄振动
+		Input.start_joy_vibration(0, 0.5, 0.3, 0.3)
+
 	var FT: FloatingText = FLOATING_TEXT.instantiate()
-	add_child(FT)
+	FT.global_position = self.global_position
+	if Global.Floating_Texts:
+		# print("path0")
+		Global.Floating_Texts.add_child(FT)
+	else:
+		printerr("path1, 需要进行坐标变化")
+		add_child(FT)
 	if FT:
 		FT.display_damage_text(str(damage))
 
