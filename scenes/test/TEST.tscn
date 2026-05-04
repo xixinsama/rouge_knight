@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c7dlamavwd203" path="res://scenes/layer_door.tscn" id="15_17n44"]
 [ext_resource type="Texture2D" uid="uid://cdvdcphpyhcg3" path="res://assets/images/pointlight.png" id="21_a60m0"]
 [ext_resource type="Script" uid="uid://byrvwcljygviy" path="res://scripts/camera_crosshair.gd" id="24_fblj4"]
+[ext_resource type="Script" uid="uid://cjfu67uc2itfg" path="res://scripts/components/donut_area_2d.gd" id="25_hgq4w"]
 
 [sub_resource type="Gradient" id="Gradient_trceg"]
 offsets = PackedFloat32Array(0)
@@ -870,7 +871,7 @@ metadata/_custom_type_script = "uid://bml5wwwac0vne"
 [node name="演示用Player" type="CharacterBody2D" parent="." unique_id=631283362 groups=["player"]]
 z_index = 3
 z_as_relative = false
-position = Vector2(63, -71)
+position = Vector2(-80, -264)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 129
@@ -930,6 +931,12 @@ shape = SubResource("RectangleShape2D_tpt76")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="多段伤害" unique_id=1873733114]
 libraries/ = SubResource("AnimationLibrary_asl1u")
 autoplay = &"20hits"
+
+[node name="DonutArea2D" type="Node2D" parent="." unique_id=1543683647]
+position = Vector2(-167, -64)
+script = ExtResource("25_hgq4w")
+rect_size = Vector2(300, 200)
+metadata/_custom_type_script = "uid://cjfu67uc2itfg"
 
 [node name="CameraController" type="Camera2D" parent="." unique_id=49024647 node_paths=PackedStringArray("target")]
 script = ExtResource("4_22icm")
