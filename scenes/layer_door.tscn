@@ -31,6 +31,3 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=697582604]
 shape = SubResource("RectangleShape2D_at566")
-
-[node name="Timer" type="Timer" parent="." unique_id=293861366]
-wait_time = 0.5

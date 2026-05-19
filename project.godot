@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 InputTest="*uid://bv83ael8whosf"
 GameConst="*uid://dh4svneyibx5v"
+SeedManager="*uid://5sw3u6hu5tv"
 SceneLoader="*uid://bgmjscfk86fv2"
 
 [display]

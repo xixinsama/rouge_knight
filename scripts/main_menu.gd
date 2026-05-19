@@ -19,4 +19,4 @@ func _on_button_pressed() -> void:
 	SceneLoader.load_scene(MAIN_PATH)
 
 func _on_text_submitted(new_text: String) -> void:
-	pass
+	SeedManager.set_master_seed(new_text.hash())

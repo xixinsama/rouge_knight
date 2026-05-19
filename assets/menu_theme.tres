@@ -2,6 +2,70 @@
 
 [ext_resource type="FontFile" uid="uid://cxrd8mo11i6ow" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Medium-3.ttf" id="1_tf8oi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqjoi"]
+bg_color = Color(0.2509804, 0.6745098, 0.5294118, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6901961)
+shadow_size = 8
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72v5"]
+bg_color = Color(0.8693319, 0.7658318, 0.99100405, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 8
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw0k4"]
+bg_color = Color(0.3796419, 0.5927492, 0.96726125, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 4
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcgci"]
+bg_color = Color(0.24042663, 0.70141274, 0.8952234, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 8
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0tqe"]
+bg_color = Color(0.99999994, 0.3785947, 0.968113, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 8
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn8fj"]
+bg_color = Color(0.49375242, 0.5666377, 0.941876, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 8
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_estnf"]
+bg_color = Color(0.24042663, 0.70141274, 0.8952234, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 8
+shadow_offset = Vector2(4, 4)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf8oi"]
 bg_color = Color(0.23921569, 0.68235296, 0.9137255, 1)
 border_width_left = 4
@@ -14,11 +78,20 @@ shadow_size = 8
 shadow_offset = Vector2(4, 4)
 
 [resource]
+Button/constants/outline_size = 12
 Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_tf8oi")
+Button/styles/disabled = SubResource("StyleBoxFlat_hqjoi")
+Button/styles/focus = SubResource("StyleBoxFlat_m72v5")
+Button/styles/hover = SubResource("StyleBoxFlat_vw0k4")
+Button/styles/normal = SubResource("StyleBoxFlat_hcgci")
+Button/styles/pressed = SubResource("StyleBoxFlat_x0tqe")
 Label/font_sizes/font_size = 32
+LineEdit/constants/outline_size = 12
 LineEdit/font_sizes/font_size = 48
 LineEdit/fonts/font = ExtResource("1_tf8oi")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_xn8fj")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_estnf")
 ProgressBar/constants/outline_size = 2
 ProgressBar/font_sizes/font_size = 32
 ProgressBar/fonts/font = ExtResource("1_tf8oi")

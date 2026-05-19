@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://gho8f7375w7t"]
+
+[ext_resource type="Script" uid="uid://bgefmbm7g8cgw" path="res://tests/dungeon_test/dungeon_test.gd" id="1_test"]
+[ext_resource type="Theme" uid="uid://04l876qr1pmq" path="res://assets/menu_theme.tres" id="2_tclt2"]
+[ext_resource type="Script" uid="uid://brvem3boxe1n8" path="res://scripts/manager/layer_manager.gd" id="3_tclt2"]
+[ext_resource type="Script" uid="uid://dyv8c7f8sr62r" path="res://scripts/dungeon_map/dungeon_generator.gd" id="5_llqq6"]
+[ext_resource type="TileSet" uid="uid://diooabvftpbwr" path="res://assets/images/tilemap/test_tile_set.tres" id="6_2atic"]
+[ext_resource type="Script" uid="uid://b6vfng3tlxpr" path="res://scripts/dungeon_map/room_config.gd" id="6_6abbm"]
+[ext_resource type="Script" uid="uid://bdgv7qou6n56w" path="res://scripts/dungeon_map/dungeon_config.gd" id="7_30ras"]
+
+[sub_resource type="Resource" id="Resource_6abbm"]
+script = ExtResource("7_30ras")
+metadata/_custom_type_script = "uid://bdgv7qou6n56w"
+
+[node name="DungeonTest" type="Node2D" unique_id=1934381846]
+script = ExtResource("1_test")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1961571663]
+layer = 10
+
+[node name="InfoLabel" type="Label" parent="UI" unique_id=589986337]
+offset_right = 407.0
+offset_bottom = 325.0
+theme = ExtResource("2_tclt2")
+metadata/_edit_lock_ = true
+
+[node name="HelpLabel" type="RichTextLabel" parent="UI" unique_id=855088524]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -198.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_tclt2")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]Controls:[/b]
+  [Space] New seed  |  [R] Re-generate  |  [1/2/3] Switch layer  |  [V] Cycle vis  | [T] Run 50-generation test  |  [Scroll] Zoom  |  [WASD] Pan"
+metadata/_edit_lock_ = true
+
+[node name="LayerManager" type="Node" parent="." unique_id=183663287 node_paths=PackedStringArray("all_layers")]
+script = ExtResource("3_tclt2")
+all_layers = [NodePath("../TileMapLayer"), NodePath("../TileMapLayer2"), NodePath("../TileMapLayer3")]
+metadata/_custom_type_script = "uid://brvem3boxe1n8"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=346616525]
+z_as_relative = false
+scale = Vector2(2, 2)
+tile_set = ExtResource("6_2atic")
+metadata/_edit_lock_ = true
+
+[node name="DungeonGenerator" type="Node" parent="TileMapLayer" unique_id=2078108867 node_paths=PackedStringArray("tile_map_layer")]
+script = ExtResource("5_llqq6")
+tile_map_layer = NodePath("..")
+dungeon_config = SubResource("Resource_6abbm")
+metadata/_custom_type_script = "uid://dyv8c7f8sr62r"
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1891421492]
+z_as_relative = false
+scale = Vector2(2, 2)
+tile_set = ExtResource("6_2atic")
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1844031950]
+z_as_relative = false
+scale = Vector2(2, 2)
+tile_set = ExtResource("6_2atic")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1318564300]
+position = Vector2(960, 540)
