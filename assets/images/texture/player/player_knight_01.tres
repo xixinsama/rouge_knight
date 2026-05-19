@@ -5,4 +5,5 @@ load_path = "res://.godot/imported/tilemap_packed.png-34ddf80168db0ed70ad448119e
 
 [resource]
 atlas = SubResource("CompressedTexture2D_lshbc")
-region = Rect2(0, 128, 16, 16)
+region = Rect2(48, 128, 16, 16)
+filter_clip = true

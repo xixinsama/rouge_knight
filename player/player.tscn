@@ -1,16 +1,186 @@
 [gd_scene format=3 uid="uid://c5quehovv6ltn"]
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://6c8tx1ylrn0j" path="res://assets/images/sword_slashes/blue_wide.png" id="2_boad6"]
+[ext_resource type="Script" uid="uid://bq5qma06q43av" path="res://player/player_attack.gd" id="2_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://c4h53l5yuq8mt" path="res://assets/images/texture/player/player_knight_01.tres" id="2_rkbax"]
 [ext_resource type="Shader" uid="uid://u7tnqsp6kvu3" path="res://assets/shaders/shadow.gdshader" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="3_rgyib"]
+[ext_resource type="Script" uid="uid://dblh2g0jdpm6m" path="res://scripts/components/hurtbox_component.gd" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://cvglh06nmi2nb" path="res://scripts/components/health_component.gd" id="5_boad6"]
+[ext_resource type="Texture2D" uid="uid://cdvdcphpyhcg3" path="res://assets/images/pointlight.png" id="6_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
-size = Vector2(64, 64)
+size = Vector2(48, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_boad6"]
+load_path = "res://.godot/imported/tilemap_packed.png-34ddf80168db0ed70ad448119e897d62.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
+atlas = SubResource("CompressedTexture2D_boad6")
+region = Rect2(160, 144, 16, 16)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
+size = Vector2(32, 36)
+
+[sub_resource type="Animation" id="Animation_rgyib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/HitboxComponent:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlashSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sword:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sword:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.9215338, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_boad6"]
+resource_name = "attack"
+length = 0.5
+loop_mode = 1
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/HitboxComponent:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlashSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.18333334, 0.23333333, 0.26666668, 0.3, 0.31666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlashSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.18333334, 0.3167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 3, 0, 2, 3, 2, 2, 2, 2),
+"points": PackedFloat32Array(0.39618975, -0.006651178, 0.10966484, 0, 0, -0.13962634, -0.008244179, -0.0027788081, 0.02368712, 0.007984053, 0.041888464, -0.009938189, -0.041983586, 0.013748932, 0.05808196, 0.4607669, -0.002103053, -0.11519173, 0.002103053, 0.11519173, 0.9215338, -0.0069520352, -0.07679449, 0, 0, 2.1711895, -0.0021304614, -0.11983561, 0.0031340942, 0.17628862, 2.6982791, -0.0047011413, -0.19765854, 0.0047011413, 0.19765854, 2.9618237, -0.0037093386, -0.043924093, 0, 0, 1.9757127, -0.02270034, 0.16435184, 0, 0, 1.0541788, -0.011674589, 0.15358898, 0, 0, 0.39618975, -0.006651178, 0.10966484, 0, 0),
+"times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sword:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(23.000004, -0.006651178, 1.666666, 0, 0, 9, -0.008244179, -0.21515383, 0.02368712, 0.61817855, 15, -0.009938189, -1.3286093, 0.013748932, 1.8380572, 27.999998, -0.002103053, -7.7500005, 0.002103053, 7.7500005, 59, -0.002103053, -10.749998, 0.002103053, 10.749998, 70.99999, -0.0021304614, -1.9999988, 0, 0, 33.999992, -0.0031340942, 6.1666665, 0, 0, 22, -0.0037093386, 1.9999987, 0, 0, 35, -0.02270034, -2.1666667, 0, 0, 33, -0.011674589, 0.33333334, 0, 0, 23.000004, -0.006651178, 1.666666, 0, 0),
+"times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sword:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(-24.000002, -0.006651178, 0.8333337, 0, 0, -34, -0.008244179, 0.08606155, 0.02368712, -0.24727148, -37, -0.009938189, -0.5594145, 0.013748932, 0.77391887, -26, -0.002103053, 1, 0.002103053, -1, -30, -0.002103053, -5.25, 0.002103053, 5.25, -5.000002, -0.0021304614, -4.166667, 0, 0, 5.000003, -0.0031340942, -1.6666675, 0, 0, 6.999999, -0.0037093386, -0.3333327, 0, 0, 2.999999, -0.02270034, 0.6666666, 0, 0, -19, -0.011674589, 3.666667, 0, 0, -24.000002, -0.006651178, 0.8333337, 0, 0),
+"times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
+_data = {
+&"RESET": SubResource("Animation_rgyib"),
+&"attack": SubResource("Animation_boad6")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yw30f"]
 shader = ExtResource("3_g1dw6")
 shader_parameter/compress = 0.5
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(0.1452662, 0.1452662, 0.1452662, 0.7647059)
 shader_parameter/shadow_alpha = 1.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/flip_h = false
@@ -21,30 +191,100 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_oul6g"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6s5"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1529097501 groups=["player"]]
-position = Vector2(128, 192)
+collision_layer = 2
 script = ExtResource("1_oul6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144286148]
-scale = Vector2(4, 4)
-texture = ExtResource("2_rkbax")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=226335161]
-enabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916302073]
 shape = SubResource("RectangleShape2D_rkbax")
+metadata/_edit_lock_ = true
+
+[node name="Attack" type="Node2D" parent="." unique_id=2083244337]
+script = ExtResource("2_hg6s5")
+
+[node name="Line2D" type="Line2D" parent="Attack" unique_id=235617191]
+points = PackedVector2Array(0, 0, 92, 0)
+default_color = Color(1, 0, 0, 0.6431373)
+
+[node name="SlashSprite" type="Sprite2D" parent="Attack" unique_id=1948980601]
+visible = false
+position = Vector2(51, -12)
+texture = ExtResource("2_boad6")
+hframes = 3
+vframes = 2
+
+[node name="Sword" type="Sprite2D" parent="Attack" unique_id=196413876]
+position = Vector2(59, -30)
+rotation = 0.9215338
+scale = Vector2(2, 3)
+texture = SubResource("AtlasTexture_rgyib")
+
+[node name="HitboxComponent" type="Area2D" parent="Attack/Sword" unique_id=2051184133 node_paths=PackedStringArray("parry_owner")]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.33333334)
+collision_layer = 8
+collision_mask = 209
+script = ExtResource("3_rgyib")
+active = true
+parry_owner = NodePath("../../..")
+metadata/_custom_type_script = "uid://bjnm23jbmmhga"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/Sword/HitboxComponent" unique_id=1518356513]
+shape = SubResource("RectangleShape2D_8t03j")
+debug_color = Color(2.0214916e-06, 0.6427266, 0.31812355, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Attack" unique_id=893139284]
+libraries/ = SubResource("AnimationLibrary_rgyib")
+autoplay = &"attack"
+speed_scale = 0.2
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+audio_listener_enable_2d = true
+size = Vector2i(32, 32)
 
-[node name="MainSprite2D" type="Sprite2D" parent="SubViewport" unique_id=545110194]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=2144286148]
+position = Vector2(16, 16)
+texture = ExtResource("2_rkbax")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=161618814]
 material = SubResource("ShaderMaterial_yw30f")
+scale = Vector2(2, 2)
 texture = SubResource("ViewportTexture_rkbax")
+metadata/_edit_lock_ = true
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1138973312]
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
 texture = SubResource("ViewportTexture_oul6g")
+metadata/_edit_lock_ = true
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1342829835 node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -8)
+collision_layer = 32
+collision_mask = 16
+monitorable = false
+script = ExtResource("4_g6k8r")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://dblh2g0jdpm6m"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2115069029]
+shape = SubResource("RectangleShape2D_hg6s5")
+debug_color = Color(0.99999994, 0.0042647216, 0.06863447, 0.49411765)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=749084221]
+script = ExtResource("5_boad6")
+metadata/_custom_type_script = "uid://cvglh06nmi2nb"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1502477156]
+position = Vector2(0, -8)
+texture = ExtResource("6_rgyib")
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1866585462]
 
