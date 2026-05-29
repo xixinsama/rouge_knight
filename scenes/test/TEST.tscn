@@ -2,19 +2,27 @@
 
 [ext_resource type="Script" uid="uid://b7h6wg4e5jgd7" path="res://scripts/components/healthbar.gd" id="3_bts7q"]
 [ext_resource type="Texture2D" uid="uid://cr1v7qxiqislv" path="res://assets/images/tilemap/Ceiling Autotiling Godot.png" id="3_lubul"]
+[ext_resource type="Texture2D" uid="uid://uceh0ufo8gsh" path="res://assets/images/UI_posturebar_player0.png" id="3_lxpgf"]
 [ext_resource type="Script" uid="uid://64pjk4q1bthn" path="res://scenes/test/screen_hint.gd" id="3_rgxlt"]
 [ext_resource type="Script" uid="uid://b2ckafhpvuggq" path="res://scripts/components/camera_controller.gd" id="4_22icm"]
 [ext_resource type="Texture2D" uid="uid://ciomw8k5jplq1" path="res://assets/images/cross_hair.png" id="4_bts7q"]
+[ext_resource type="Texture2D" uid="uid://dfjuj0ykbh3ad" path="res://assets/images/UI_posturebar_player1.png" id="4_rpyds"]
 [ext_resource type="Script" uid="uid://dkgri5em7bng1" path="res://scripts/ui_crosshair.gd" id="5_hgq4w"]
+[ext_resource type="Texture2D" uid="uid://c211uaokkb46p" path="res://assets/images/player_hp.png" id="6_l0boc"]
 [ext_resource type="Script" uid="uid://dqe4c0y6howym" path="res://scripts/particle_spawner.gd" id="6_o36l3"]
 [ext_resource type="Script" uid="uid://upe5tolr2bvt" path="res://scenes/enemies/enemy_factory.gd" id="6_rgxlt"]
 [ext_resource type="PackedScene" uid="uid://dq11b8np4m0np" path="res://scenes/enemies/EnemyBase.tscn" id="7_bts7q"]
 [ext_resource type="Script" uid="uid://c0ifhxufuqa7" path="res://scripts/bullets/bullet_factory.gd" id="7_ipbgh"]
+[ext_resource type="Texture2D" uid="uid://bde7qqm3qp0gv" path="res://assets/images/player_hp1.png" id="7_obrjl"]
+[ext_resource type="Texture2D" uid="uid://bp8y8fsnckcnc" path="res://assets/images/boss_hp0.png" id="8_17n44"]
+[ext_resource type="Texture2D" uid="uid://c68w7jwpmstio" path="res://assets/images/boss_hp1.png" id="9_a60m0"]
 [ext_resource type="Script" uid="uid://bw3t8qebo1pe4" path="res://scenes/test/draw_path.gd" id="9_kub0o"]
 [ext_resource type="Texture2D" uid="uid://cfwdlvfl2jfl" path="res://assets/images/sword_slashes/red_yellow_group.png" id="9_rfs8u"]
 [ext_resource type="Script" uid="uid://b4yfck8ga2dlj" path="res://scripts/components/spawner_component.gd" id="10_bgt3b"]
 [ext_resource type="Script" uid="uid://brvem3boxe1n8" path="res://scripts/manager/layer_manager.gd" id="10_lxpgf"]
+[ext_resource type="Texture2D" uid="uid://dfigkm6gqy058" path="res://assets/images/UI_posturebar_boos0.png" id="10_qn474"]
 [ext_resource type="PackedScene" uid="uid://xq7dxnoohr7a" path="res://scenes/FloatingText.tscn" id="11_8vppd"]
+[ext_resource type="Texture2D" uid="uid://debe0fpuaw45d" path="res://assets/images/UI_posturebar_boos1.png" id="11_fblj4"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="12_im127"]
 [ext_resource type="Script" uid="uid://bkwjfxawgowcd" path="res://scenes/test/navigate_map.gd" id="12_rpyds"]
 [ext_resource type="Script" uid="uid://dyv8c7f8sr62r" path="res://scripts/dungeon_map/dungeon_generator.gd" id="13_l0boc"]
@@ -25,51 +33,6 @@
 [ext_resource type="Script" uid="uid://dcpjf1kqlnh3a" path="res://scenes/enemies/enemy_config.gd" id="20_eaojj"]
 [ext_resource type="Script" uid="uid://byrvwcljygviy" path="res://scripts/camera_crosshair.gd" id="24_fblj4"]
 [ext_resource type="PackedScene" uid="uid://c5quehovv6ltn" path="res://player/player.tscn" id="28_hgq4w"]
-
-[sub_resource type="Gradient" id="Gradient_trceg"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0.8093845, 0.742196, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2poy7"]
-gradient = SubResource("Gradient_trceg")
-width = 576
-height = 24
-
-[sub_resource type="Gradient" id="Gradient_bts7q"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.78039217, 0, 0.28627452, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hgq4w"]
-gradient = SubResource("Gradient_bts7q")
-width = 576
-height = 24
-
-[sub_resource type="Gradient" id="Gradient_a8y0u"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1luh"]
-gradient = SubResource("Gradient_a8y0u")
-width = 576
-height = 24
-
-[sub_resource type="Gradient" id="Gradient_muem4"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.78039217, 0, 0.28627452, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m0d7i"]
-gradient = SubResource("Gradient_muem4")
-width = 1187
-height = 36
-
-[sub_resource type="Gradient" id="Gradient_jkv2x"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.78039217, 1, 0.28627452, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u327v"]
-gradient = SubResource("Gradient_jkv2x")
-width = 1382
-height = 44
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
 atlas = ExtResource("4_bts7q")
@@ -713,44 +676,67 @@ script = ExtResource("3_rgxlt")
 metadata/_custom_type_script = "uid://64pjk4q1bthn"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UI" unique_id=1927837111]
-offset_left = 35.0
-offset_top = 1002.0
-offset_right = 611.0
-offset_bottom = 1042.0
-texture_under = SubResource("GradientTexture2D_2poy7")
-texture_progress = SubResource("GradientTexture2D_hgq4w")
+offset_left = 31.0
+offset_top = 990.0
+offset_right = 361.0
+offset_bottom = 1010.0
+scale = Vector2(2, 2)
+value = 100.0
+texture_under = ExtResource("3_lxpgf")
+texture_progress = ExtResource("4_rpyds")
 script = ExtResource("3_bts7q")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="UI" unique_id=201010884]
 offset_left = 61.0
 offset_top = 1025.0
-offset_right = 361.0
-offset_bottom = 1065.0
-texture_under = SubResource("GradientTexture2D_x1luh")
+offset_right = 349.0
+offset_bottom = 1045.0
+scale = Vector2(2, 2)
+value = 82.0
+texture_under = ExtResource("6_l0boc")
+texture_progress = ExtResource("7_obrjl")
 
 [node name="TextureProgressBar4" type="TextureProgressBar" parent="UI" unique_id=1289479642]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -586.0
+offset_left = -647.0
 offset_top = 34.0
-offset_right = 601.0
-offset_bottom = 74.0
+offset_right = 3.0
+offset_bottom = 56.0
 grow_horizontal = 2
-texture_under = SubResource("GradientTexture2D_m0d7i")
+scale = Vector2(2, 2)
+value = 56.0
+texture_under = ExtResource("8_17n44")
+texture_progress = ExtResource("9_a60m0")
 
 [node name="TextureProgressBar3" type="TextureProgressBar" parent="UI" unique_id=179056643]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -687.0
-offset_top = 68.0
-offset_right = 695.0
-offset_bottom = 112.0
+offset_left = -1.0
+offset_top = 66.0
+offset_right = 649.0
+offset_bottom = 88.0
 grow_horizontal = 2
-texture_under = SubResource("GradientTexture2D_u327v")
+scale = Vector2(2, 2)
+value = 30.0
+texture_under = ExtResource("10_qn474")
+texture_progress = ExtResource("11_fblj4")
+
+[node name="TextureProgressBar5" type="TextureProgressBar" parent="UI" unique_id=1233994324]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 21.0
+offset_top = 66.0
+offset_right = 671.0
+offset_bottom = 88.0
+grow_horizontal = 2
+scale = Vector2(-2, 2)
+value = 30.0
+texture_under = ExtResource("10_qn474")
+texture_progress = ExtResource("11_fblj4")
 
 [node name="UICrosshair" type="AnimatedSprite2D" parent="UI" unique_id=311564960]
 scale = Vector2(4, 4)
@@ -780,11 +766,10 @@ metadata/_custom_type_script = "uid://upe5tolr2bvt"
 script = ExtResource("7_ipbgh")
 metadata/_custom_type_script = "uid://c0ifhxufuqa7"
 
-[node name="FloatingTexts" type="Node2D" parent="." unique_id=927323279 node_paths=PackedStringArray("parent_node")]
+[node name="FloatingTexts" type="Node2D" parent="." unique_id=927323279]
 unique_name_in_owner = true
 script = ExtResource("10_bgt3b")
 scene = ExtResource("11_8vppd")
-parent_node = NodePath("")
 
 [node name="PathDrawer" type="Node2D" parent="." unique_id=1538639986]
 unique_name_in_owner = true
@@ -871,7 +856,6 @@ collision_layer = 16
 collision_mask = 32
 monitoring = false
 script = ExtResource("12_im127")
-damage = 1
 metadata/_custom_type_script = "uid://bjnm23jbmmhga"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="多段伤害/HitboxComponent" unique_id=1377216504]
