@@ -15,9 +15,7 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	var hitbox := area as HitboxComponent
 	
-	# 血量组件存在且未死亡时造成伤害
+	# 血量组件存在且未死亡时，通知攻击框命中
+	# 伤害由攻击方的 AttackComponent 通过 hit 信号计算并施加
 	if health_component and not health_component.is_dead:
-		health_component.take_damage(hitbox.damage)
-		
-		# 通知攻击框已击中，用于触发攻击方的特效/音效
 		hitbox.register_hit(self)

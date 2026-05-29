@@ -1,0 +1,21 @@
+[gd_resource type="Theme" format=3 uid="uid://cecp2wjapvh1"]
+
+[ext_resource type="FontFile" uid="uid://c3g5yfcr3ntk1" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Regular-2.ttf" id="1_xnveu"]
+[ext_resource type="FontFile" uid="uid://chfn5i1k7yssh" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Bold-7.ttf" id="2_fcqm1"]
+[ext_resource type="FontFile" uid="uid://bn65lidlu1x0q" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Bold-Italic-8.ttf" id="3_d6wyj"]
+[ext_resource type="FontFile" uid="uid://dncql6kr2m4sc" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Medium-Italic-4.ttf" id="4_4bmu0"]
+[ext_resource type="FontFile" uid="uid://cxrd8mo11i6ow" path="res://assets/fonts/JetBrains-Mono/JetBrainsMono-Medium-3.ttf" id="5_j4e4i"]
+
+[resource]
+LineEdit/font_sizes/font_size = 18
+LineEdit/fonts/font = ExtResource("1_xnveu")
+RichTextLabel/font_sizes/bold_font_size = 18
+RichTextLabel/font_sizes/bold_italics_font_size = 18
+RichTextLabel/font_sizes/italics_font_size = 18
+RichTextLabel/font_sizes/mono_font_size = 18
+RichTextLabel/font_sizes/normal_font_size = 18
+RichTextLabel/fonts/bold_font = ExtResource("2_fcqm1")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_d6wyj")
+RichTextLabel/fonts/italics_font = ExtResource("4_4bmu0")
+RichTextLabel/fonts/mono_font = ExtResource("5_j4e4i")
+RichTextLabel/fonts/normal_font = ExtResource("1_xnveu")
