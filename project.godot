@@ -23,6 +23,7 @@ InputTest="*uid://bv83ael8whosf"
 GameConst="*uid://dh4svneyibx5v"
 SeedManager="*uid://5sw3u6hu5tv"
 SceneLoader="*uid://bgmjscfk86fv2"
+LogManager="*uid://ddb7lesyv4gcm"
 
 [display]
 
@@ -40,7 +41,7 @@ movie_writer/movie_file="D:/Godot4/MovieOutputRAW/rk_0.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/control_console/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
@@ -106,6 +107,11 @@ zoom_out={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
+click_right={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(107, 31),"global_position":Vector2(121, 104),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -121,7 +127,9 @@ zoom_out={
 
 [physics]
 
+2d/run_on_separate_thread=true
 3d/physics_engine="Jolt Physics"
+2d/solver/solver_iterations=32
 
 [rendering]
 

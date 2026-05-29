@@ -21,15 +21,4 @@ func _ready() -> void:
 	Global.draw_path = %PathDrawer
 	Global.Layer_Manager = $LayerManager
 
-	Global.Donut_Area = $DonutArea2D
-	Global.Donut_Area.register($"演示用Player")
-	
-	#var da2 = $DonutArea2D2 as DonutArea2D
-	#da2.register($"演示用Player")
-	
-	_spawn(CFG_04, Vector2(0, -150))
-
-
-func _spawn(config: EnemyConfig, pos: Vector2) -> void:
-	if Global.Enemy_Factory:
-		Global.Enemy_Factory.spawn(config, pos)
+	#Global.Enemy_Factory.spawn(CFG_04, Vector2(0, -150))
