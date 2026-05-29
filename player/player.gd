@@ -15,14 +15,16 @@ const Run: StringName = &"run"
 @export var dash_speed: float = 400.0
 
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var attack_component: AttackComponent = $AttackComponent
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
+	timer.timeout.connect(_attack)
 	hurtbox_component.health_component.damaged.connect(get_damage)
 	
 	# 初始化完成后赋予引用
 	current = self
 
-const FLOATING_TEXT = preload("res://scenes/FloatingText.tscn")
 func get_damage(damage: int, _current_health: int):
 	if damage > 0:
 		## 效果
@@ -32,16 +34,9 @@ func get_damage(damage: int, _current_health: int):
 		# 手柄振动
 		Input.start_joy_vibration(0, 0.5, 0.3, 0.3)
 
-	var FT: FloatingText = FLOATING_TEXT.instantiate()
-	FT.global_position = self.global_position
 	if Global.Floating_Texts:
-		# print("path0")
-		Global.Floating_Texts.add_child(FT)
-	else:
-		printerr("path1, 需要进行坐标变化")
-		add_child(FT)
-	if FT:
-		FT.display_damage_text(str(damage))
+		var ft: FloatingText = Global.Floating_Texts.spawn(self.global_position)
+		ft.display_damage_text(str(damage))
 
 func _physics_process(_delta: float) -> void:
 	var input_vector: Vector2 = Vector2.ZERO
@@ -59,7 +54,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		velocity = velocity.normalized() * run_speed
 		
 
-
+func _attack():
+	timer.start()
+	attack_component.request_attack()
 
 
 	

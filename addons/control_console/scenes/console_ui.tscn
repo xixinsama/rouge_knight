@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cgueuj3stpoom"]
+
+[ext_resource type="Script" uid="uid://b4rlbqju8e838" path="res://addons/control_console/scripts/console_ui.gd" id="1_ui"]
+[ext_resource type="Script" uid="uid://tpb6ftwbip7d" path="res://addons/control_console/examples/example_commands.gd" id="2_d6o26"]
+[ext_resource type="Script" uid="uid://bl14xpeqmyrq8" path="res://addons/control_console/scripts/console_config.gd" id="3_2ay8j"]
+[ext_resource type="Theme" uid="uid://cecp2wjapvh1" path="res://assets/console_theme.tres" id="4_2ay8j"]
+
+[sub_resource type="Resource" id="Resource_kmbva"]
+script = ExtResource("3_2ay8j")
+show_frame_info = true
+metadata/_custom_type_script = "uid://bl14xpeqmyrq8"
+
+[node name="ConsoleUI" type="CanvasLayer" unique_id=1841856364]
+process_mode = 1
+script = ExtResource("1_ui")
+command_script = ExtResource("2_d6o26")
+config = SubResource("Resource_kmbva")
+
+[node name="ConsolePanel" type="Panel" parent="." unique_id=1803789188]
+self_modulate = Color(0.1254902, 0.13725491, 0.14901961, 0.74509805)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 540.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ConsolePanel" unique_id=1091610668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConsolePanel/MarginContainer" unique_id=2056298605]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ConsolePanel/MarginContainer/VBoxContainer" unique_id=1609598705]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_hint_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ConsolePanel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1108546244]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+theme = ExtResource("4_2ay8j")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+scroll_following = true
+scroll_following_visible_characters = true
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConsolePanel/MarginContainer/VBoxContainer" unique_id=258888503]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConsolePanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=615660923]
+layout_mode = 2
+text = "> "
+
+[node name="LineEdit" type="LineEdit" parent="ConsolePanel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1674341614]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 1
+theme = ExtResource("4_2ay8j")
+placeholder_text = "Type /help for commands..."

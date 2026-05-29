@@ -21,9 +21,4 @@ func _ready() -> void:
 	Global.draw_path = %PathDrawer
 	Global.Layer_Manager = $LayerManager
 
-	_spawn(CFG_04, Vector2(0, -150))
-
-
-func _spawn(config: EnemyConfig, pos: Vector2) -> void:
-	if Global.Enemy_Factory:
-		Global.Enemy_Factory.spawn(config, pos)
+	#Global.Enemy_Factory.spawn(CFG_04, Vector2(0, -150))

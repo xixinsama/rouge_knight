@@ -22,12 +22,15 @@ config/icon="res://icon.svg"
 InputTest="*uid://bv83ael8whosf"
 GameConst="*uid://dh4svneyibx5v"
 SceneLoader="*uid://bgmjscfk86fv2"
+LogManager="*uid://ddb7lesyv4gcm"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/always_on_top=true
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 
@@ -37,7 +40,7 @@ movie_writer/movie_file="D:/Godot4/MovieOutputRAW/rk_0.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/control_console/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
@@ -118,7 +121,9 @@ zoom_out={
 
 [physics]
 
+2d/run_on_separate_thread=true
 3d/physics_engine="Jolt Physics"
+2d/solver/solver_iterations=32
 
 [rendering]
 

@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://c0ifhxufuqa7" path="res://scripts/bullets/bullet_factory.gd" id="7_ipbgh"]
 [ext_resource type="Script" uid="uid://bw3t8qebo1pe4" path="res://scenes/test/draw_path.gd" id="9_kub0o"]
 [ext_resource type="Texture2D" uid="uid://cfwdlvfl2jfl" path="res://assets/images/sword_slashes/red_yellow_group.png" id="9_rfs8u"]
+[ext_resource type="Script" uid="uid://b4yfck8ga2dlj" path="res://scripts/components/spawner_component.gd" id="10_bgt3b"]
 [ext_resource type="Script" uid="uid://brvem3boxe1n8" path="res://scripts/manager/layer_manager.gd" id="10_lxpgf"]
+[ext_resource type="PackedScene" uid="uid://xq7dxnoohr7a" path="res://scenes/FloatingText.tscn" id="11_8vppd"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="12_im127"]
 [ext_resource type="Script" uid="uid://bkwjfxawgowcd" path="res://scenes/test/navigate_map.gd" id="12_rpyds"]
 [ext_resource type="Script" uid="uid://dyv8c7f8sr62r" path="res://scripts/dungeon_map/dungeon_generator.gd" id="13_l0boc"]
@@ -20,6 +22,7 @@
 [ext_resource type="Script" uid="uid://bml5wwwac0vne" path="res://scripts/dungeon_map/astar_find_path.gd" id="14_obrjl"]
 [ext_resource type="Script" uid="uid://b2n3wxdloe703" path="res://scenes/test/test_enemy_spawner.gd" id="14_spawn"]
 [ext_resource type="PackedScene" uid="uid://c7dlamavwd203" path="res://scenes/layer_door.tscn" id="15_17n44"]
+[ext_resource type="Script" uid="uid://dcpjf1kqlnh3a" path="res://scenes/enemies/enemy_config.gd" id="20_eaojj"]
 [ext_resource type="Script" uid="uid://byrvwcljygviy" path="res://scripts/camera_crosshair.gd" id="24_fblj4"]
 [ext_resource type="PackedScene" uid="uid://c5quehovv6ltn" path="res://player/player.tscn" id="28_hgq4w"]
 
@@ -654,6 +657,13 @@ _data = {
 &"RESET": SubResource("Animation_tpt76")
 }
 
+[sub_resource type="Resource" id="Resource_bgt3b"]
+script = ExtResource("20_eaojj")
+enemy_id = "007"
+max_health = 99999999
+behavior = 1
+metadata/_custom_type_script = "uid://dcpjf1kqlnh3a"
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tpt76"]
 frequency = 0.004
 
@@ -770,8 +780,11 @@ metadata/_custom_type_script = "uid://upe5tolr2bvt"
 script = ExtResource("7_ipbgh")
 metadata/_custom_type_script = "uid://c0ifhxufuqa7"
 
-[node name="FloatingTexts" type="Node" parent="." unique_id=1049336003]
+[node name="FloatingTexts" type="Node2D" parent="." unique_id=927323279 node_paths=PackedStringArray("parent_node")]
 unique_name_in_owner = true
+script = ExtResource("10_bgt3b")
+scene = ExtResource("11_8vppd")
+parent_node = NodePath("")
 
 [node name="PathDrawer" type="Node2D" parent="." unique_id=1538639986]
 unique_name_in_owner = true
@@ -873,12 +886,18 @@ z_index = 1
 z_as_relative = false
 position = Vector2(96, 96)
 
+[node name="EnemyBase" parent="." unique_id=1282296849 instance=ExtResource("7_bts7q")]
+position = Vector2(-32, -96)
+config = SubResource("Resource_bgt3b")
+
+[node name="HealthComponent" parent="EnemyBase/HurtboxComponent" parent_id_path=PackedInt32Array(1282296849, 1846605619) index="1" unique_id=1893038976]
+invincible_time = 0.0
+
 [node name="CameraController" type="Camera2D" parent="." unique_id=49024647 node_paths=PackedStringArray("target")]
 script = ExtResource("4_22icm")
 min_zoom = Vector2(2, 2)
 max_zoom = Vector2(4, 4)
 target = NodePath("../Player")
-offset_factor = 64.0
 metadata/_custom_type_script = "uid://b2ckafhpvuggq"
 
 [node name="CameraCrosshair" type="AnimatedSprite2D" parent="CameraController" unique_id=2099730493]
@@ -904,3 +923,5 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[editable path="EnemyBase"]

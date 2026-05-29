@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://c5quehovv6ltn"]
 
 [ext_resource type="Script" uid="uid://bf4i7r1nnf5f7" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cjrp6wws6mr3b" path="res://scripts/components/status_component.gd" id="2_2ieo8"]
+[ext_resource type="Script" uid="uid://bujid1whonfeu" path="res://scripts/components/attack_component.gd" id="2_8t03j"]
 [ext_resource type="Texture2D" uid="uid://6c8tx1ylrn0j" path="res://assets/images/sword_slashes/blue_wide.png" id="2_boad6"]
 [ext_resource type="Script" uid="uid://bq5qma06q43av" path="res://player/player_attack.gd" id="2_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://c4h53l5yuq8mt" path="res://assets/images/texture/player/player_knight_01.tres" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://ce76b1d5v2rhx" path="res://scripts/components/data_res/combo_segment.gd" id="3_32hag"]
 [ext_resource type="Shader" uid="uid://u7tnqsp6kvu3" path="res://assets/shaders/shadow.gdshader" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://bjnm23jbmmhga" path="res://scripts/components/hitbox_component.gd" id="3_rgyib"]
+[ext_resource type="Script" uid="uid://brl3imi4eq8fa" path="res://scripts/components/stats_component.gd" id="3_yllr7"]
 [ext_resource type="Script" uid="uid://dblh2g0jdpm6m" path="res://scripts/components/hurtbox_component.gd" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://itmf6wsggtd3" path="res://scripts/components/stamina_component.gd" id="4_kb6p2"]
+[ext_resource type="Script" uid="uid://ctx58hu7t4fof" path="res://scripts/components/data_res/weapon_data.gd" id="4_tqiix"]
 [ext_resource type="Script" uid="uid://cvglh06nmi2nb" path="res://scripts/components/health_component.gd" id="5_boad6"]
+[ext_resource type="Script" uid="uid://b63d3ruo73sns" path="res://scripts/components/data_res/impact_config.gd" id="5_e7oew"]
 [ext_resource type="Texture2D" uid="uid://cdvdcphpyhcg3" path="res://assets/images/pointlight.png" id="6_rgyib"]
+
+[sub_resource type="Resource" id="Resource_c35mf"]
+script = ExtResource("4_tqiix")
+metadata/_custom_type_script = "uid://ctx58hu7t4fof"
+
+[sub_resource type="Resource" id="Resource_32hag"]
+script = ExtResource("5_e7oew")
+metadata/_custom_type_script = "uid://b63d3ruo73sns"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(48, 32)
@@ -29,68 +44,56 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/HitboxComponent:active")
+tracks/0/path = NodePath("SlashSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SlashSprite:frame")
+tracks/1/path = NodePath("SlashSprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SlashSprite:visible")
+tracks/2/path = NodePath("Sword:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword:position:x")
+tracks/3/path = NodePath("Sword:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-30, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sword:position:y")
+tracks/4/path = NodePath("Sword:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-30, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sword:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0.9215338, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -104,68 +107,56 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/HitboxComponent:active")
+tracks/0/path = NodePath("SlashSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SlashSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.18333334, 0.23333333, 0.26666668, 0.3, 0.31666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 3, 4, 5]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SlashSprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlashSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.18333334, 0.3167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 3, 0, 2, 3, 2, 2, 2, 2),
+"points": PackedFloat32Array(0.39618975, -0.006651178, 0.10966484, 0, 0, -0.13962634, -0.008244179, -0.0027788081, 0.02368712, 0.007984053, 0.041888464, -0.009938189, -0.041983586, 0.013748932, 0.05808196, 0.4607669, -0.002103053, -0.11519173, 0.002103053, 0.11519173, 0.9215338, -0.0069520352, -0.07679449, 0, 0, 2.1711895, -0.0021304614, -0.11983561, 0.0031340942, 0.17628862, 2.6982791, -0.0047011413, -0.19765854, 0.0047011413, 0.19765854, 2.9618237, -0.0037093386, -0.043924093, 0, 0, 1.9757127, -0.02270034, 0.16435184, 0, 0, 1.0541788, -0.011674589, 0.15358898, 0, 0, 0.39618975, -0.006651178, 0.10966484, 0, 0),
+"times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
+}
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword:rotation")
+tracks/3/path = NodePath("Sword:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 3, 0, 2, 3, 2, 2, 2, 2),
-"points": PackedFloat32Array(0.39618975, -0.006651178, 0.10966484, 0, 0, -0.13962634, -0.008244179, -0.0027788081, 0.02368712, 0.007984053, 0.041888464, -0.009938189, -0.041983586, 0.013748932, 0.05808196, 0.4607669, -0.002103053, -0.11519173, 0.002103053, 0.11519173, 0.9215338, -0.0069520352, -0.07679449, 0, 0, 2.1711895, -0.0021304614, -0.11983561, 0.0031340942, 0.17628862, 2.6982791, -0.0047011413, -0.19765854, 0.0047011413, 0.19765854, 2.9618237, -0.0037093386, -0.043924093, 0, 0, 1.9757127, -0.02270034, 0.16435184, 0, 0, 1.0541788, -0.011674589, 0.15358898, 0, 0, 0.39618975, -0.006651178, 0.10966484, 0, 0),
+"handle_modes": PackedInt32Array(0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(23.000004, -0.006651178, 1.666666, 0, 0, 9, -0.008244179, -0.21515383, 0.02368712, 0.61817855, 15, -0.009938189, -1.3286093, 0.013748932, 1.8380572, 27.999998, -0.002103053, -7.7500005, 0.002103053, 7.7500005, 59, -0.002103053, -10.749998, 0.002103053, 10.749998, 70.99999, -0.0021304614, -1.9999988, 0, 0, 33.999992, -0.0031340942, 6.1666665, 0, 0, 22, -0.0037093386, 1.9999987, 0, 0, 35, -0.02270034, -2.1666667, 0, 0, 33, -0.011674589, 0.33333334, 0, 0, 23.000004, -0.006651178, 1.666666, 0, 0),
 "times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sword:position:x")
+tracks/4/path = NodePath("Sword:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2),
-"points": PackedFloat32Array(23.000004, -0.006651178, 1.666666, 0, 0, 9, -0.008244179, -0.21515383, 0.02368712, 0.61817855, 15, -0.009938189, -1.3286093, 0.013748932, 1.8380572, 27.999998, -0.002103053, -7.7500005, 0.002103053, 7.7500005, 59, -0.002103053, -10.749998, 0.002103053, 10.749998, 70.99999, -0.0021304614, -1.9999988, 0, 0, 33.999992, -0.0031340942, 6.1666665, 0, 0, 22, -0.0037093386, 1.9999987, 0, 0, 35, -0.02270034, -2.1666667, 0, 0, 33, -0.011674589, 0.33333334, 0, 0, 23.000004, -0.006651178, 1.666666, 0, 0),
-"times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sword:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2),
 "points": PackedFloat32Array(-24.000002, -0.006651178, 0.8333337, 0, 0, -34, -0.008244179, 0.08606155, 0.02368712, -0.24727148, -37, -0.009938189, -0.5594145, 0.013748932, 0.77391887, -26, -0.002103053, 1, 0.002103053, -1, -30, -0.002103053, -5.25, 0.002103053, 5.25, -5.000002, -0.0021304614, -4.166667, 0, 0, 5.000003, -0.0031340942, -1.6666675, 0, 0, 6.999999, -0.0037093386, -0.3333327, 0, 0, 2.999999, -0.02270034, 0.6666666, 0, 0, -19, -0.011674589, 3.666667, 0, 0, -24.000002, -0.006651178, 0.8333337, 0, 0),
 "times": PackedFloat32Array(0, 0.04946507, 0.1090942, 0.19158779, 0.2, 0.21278277, 0.23158734, 0.25384337, 0.3900454, 0.46009293, 0.5)
@@ -196,6 +187,35 @@ viewport_path = NodePath("SubViewport")
 [node name="Player" type="CharacterBody2D" unique_id=1529097501 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_oul6g")
+
+[node name="Timer" type="Timer" parent="." unique_id=1854081051]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[node name="AttackComponent" type="Node" parent="." unique_id=485140676 node_paths=PackedStringArray("stats", "stamina", "hitbox", "animation_player")]
+script = ExtResource("2_8t03j")
+stats = NodePath("StatsComponent")
+stamina = NodePath("StaminaComponent")
+hitbox = NodePath("../Attack/Sword/HitboxComponent")
+animation_player = NodePath("../Attack/AnimationPlayer")
+weapon_data = SubResource("Resource_c35mf")
+impact_config = SubResource("Resource_32hag")
+counter_window_enabled = true
+metadata/_custom_type_script = "uid://bujid1whonfeu"
+
+[node name="StatsComponent" type="Node" parent="AttackComponent" unique_id=542375736]
+script = ExtResource("3_yllr7")
+metadata/_custom_type_script = "uid://brl3imi4eq8fa"
+
+[node name="StaminaComponent" type="Node" parent="AttackComponent" unique_id=1581876648]
+script = ExtResource("4_kb6p2")
+metadata/_custom_type_script = "uid://itmf6wsggtd3"
+
+[node name="StatusComponent" type="Node" parent="." unique_id=631452047 node_paths=PackedStringArray("health_component")]
+script = ExtResource("2_2ieo8")
+health_component = NodePath("../HurtboxComponent/HealthComponent")
+metadata/_custom_type_script = "uid://cjrp6wws6mr3b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1916302073]
 shape = SubResource("RectangleShape2D_rkbax")
@@ -237,7 +257,6 @@ debug_color = Color(2.0214916e-06, 0.6427266, 0.31812355, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attack" unique_id=893139284]
 libraries/ = SubResource("AnimationLibrary_rgyib")
-autoplay = &"attack"
 speed_scale = 0.2
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1976460027]
@@ -269,7 +288,7 @@ collision_layer = 32
 collision_mask = 16
 monitorable = false
 script = ExtResource("4_g6k8r")
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("HealthComponent")
 metadata/_custom_type_script = "uid://dblh2g0jdpm6m"
 metadata/_edit_lock_ = true
 
@@ -277,7 +296,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_hg6s5")
 debug_color = Color(0.99999994, 0.0042647216, 0.06863447, 0.49411765)
 
-[node name="HealthComponent" type="Node" parent="." unique_id=749084221]
+[node name="HealthComponent" type="Node" parent="HurtboxComponent" unique_id=749084221]
 script = ExtResource("5_boad6")
 metadata/_custom_type_script = "uid://cvglh06nmi2nb"
 
