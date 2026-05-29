@@ -7,7 +7,7 @@ static var UI_Layer: CanvasLayer
 static var Particle_Spawner: ParticleSpawner
 static var Enemy_Factory: EnemyFactory
 static var Bullet_Factory: BulletFactory
-static var Floating_Texts: Node ## 挂载所有伤害数字
+static var Floating_Texts: SpawnerComponent ## 挂载所有伤害数字
 
 static var Screen_Hint: ScreenHint
 

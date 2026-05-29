@@ -47,6 +47,7 @@ func _ready() -> void:
 	# 监听死亡
 	if health_component:
 		health_component.died.connect(_on_died)
+		health_component.damaged.connect(_on_damaged)
 
 
 ## 将 EnemyConfig 的各个字段分发到对应子组件
@@ -67,8 +68,7 @@ func _apply_config() -> void:
 	# 根据攻击类型配置对应攻击组件
 	match config.attack_type:
 		EnemyConfig.AttackType.MELEE:
-			if hitbox:
-				hitbox.damage = config.attack_damage
+			pass  # 伤害由 EnemyAttackMelee 通过 hit 信号处理
 		EnemyConfig.AttackType.CONTACT:
 			var contact := _find_attack(EnemyAttackContact)
 			if contact:
@@ -99,3 +99,8 @@ func _find_attack(type: Variant) -> EnemyAttack:
 
 func _on_died() -> void:
 	queue_free()
+
+func _on_damaged(damage: int, _ch: int) -> void:
+	if Global.Floating_Texts:
+		var ft: FloatingText = Global.Floating_Texts.spawn(self.global_position)
+		ft.display_damage_text(str(damage))

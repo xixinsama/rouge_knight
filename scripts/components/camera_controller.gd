@@ -1,4 +1,6 @@
 extends Camera2D
+## TODO
+## 更加流畅的视角偏移
 class_name CameraController
 
 static var current: CameraController
