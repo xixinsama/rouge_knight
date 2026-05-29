@@ -11,6 +11,7 @@ class_name LayerManager
 @export var current_layer_index: int = 0:
 	set(v):
 		var new_layer_index: int = wrapi(v, 0, all_layers.size())
+		print(new_layer_index)
 		switch_layer_anime(current_layer_index, new_layer_index)
 		current_layer_index = new_layer_index
 		## 更新
@@ -18,17 +19,19 @@ class_name LayerManager
 		current_path_finder = all_astar[current_layer_index]
 
 var all_astar: Array[AstarFindPath]
-var current_path_finder: AstarFindPath:
+var current_path_finder: AstarFindPath: ## 可外部访问
 	# 同步到 Global
 	set(v):
 		current_path_finder = v
 		Global.Path_Finder = current_path_finder
 		
-var current_layer: TileMapLayer
+var current_layer: TileMapLayer ## 可外部访问
+
+signal layer_changed(from: int, to: int)
 
 func _ready() -> void:
 	for layer in all_layers:
-		all_astar.append(layer.get_node("AstarFindPath"))
+		all_astar.append(layer.get_node_or_null("AstarFindPath"))
 		layer.hide()
 		set_layer(layer, false)
 	
@@ -48,6 +51,7 @@ func switch_layer(up: bool):
 
 var _tween: Tween
 ## 强制切换，中途不可暂停
+# 动画0.5s
 func switch_layer_anime(from_index: int, to_index: int) -> void:
 	var from := all_layers[from_index]
 	var to := all_layers[to_index]
@@ -111,3 +115,4 @@ func switch_layer_anime(from_index: int, to_index: int) -> void:
 	from.modulate.a = 1.0
 	
 	current_layer = to
+	layer_changed.emit(from_index, to_index)

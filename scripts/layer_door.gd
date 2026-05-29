@@ -11,17 +11,16 @@ var player_in_range: bool = false
 
 func _ready() -> void:
 	self.visibility_changed.connect(_on_visibility_changed)
+	
 	area_2d.body_entered.connect(_on_body_entered)
 	area_2d.body_exited.connect(_on_body_exited)
 	_updata_sprite()
 
-@onready var timer: Timer = $Timer
 func _unhandled_input(event: InputEvent) -> void:
-	if not player_in_range and not timer.is_stopped():
+	if not player_in_range:
 		return
 	if event.is_action_pressed(&"dash"):
 		if Global.Layer_Manager:
-			timer.start()
 			player_in_range = false # 防止区域重复触发
 			Global.Layer_Manager.switch_layer(up_down)
 			
@@ -36,7 +35,7 @@ func _on_body_exited(body: Node2D):
 		player_in_range = false
 
 func _on_visibility_changed():
-	area_2d.call_deferred(&"set_monitoring", visible)
+	area_2d.call_deferred(&"set_monitoring", self.is_visible_in_tree())
 
 		
 func _updata_sprite():
